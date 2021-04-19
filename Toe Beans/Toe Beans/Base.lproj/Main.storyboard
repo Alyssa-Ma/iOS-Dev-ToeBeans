@@ -11,7 +11,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Main Screen View Controller" customClass="ViewController" customModule="Toe_Beans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Main Screen View Controller" customClass="MainScreenViewController" customModule="Toe_Beans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
         <!--Favorite View Controller-->
         <scene sceneID="yeZ-Yn-Oa9">
             <objects>
-                <tableViewController id="ibv-IC-mAf" userLabel="Favorite View Controller" sceneMemberID="viewController">
+                <tableViewController id="ibv-IC-mAf" userLabel="Favorite View Controller" customClass="FavoriteTableViewController" customModule="Toe_Beans" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nmT-jt-f0m">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
