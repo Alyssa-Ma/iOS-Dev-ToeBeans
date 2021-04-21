@@ -8,7 +8,9 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    //search result array
+    var searchResults = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,18 +28,31 @@ class SearchViewController: UIViewController {
 // MARK: - Search Bar Delegate
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("The search text is: '\(searchBar.text!)'")
+        //array to hold search results
+        searchResults = []
+        for i in 0...2 {
+            searchResults.append(String(format: "Fake Result %d for '%@'", i, searchBar.text!))
+        }
+        //reloads table view to make new rows visible
+        tableView.reloadData()
     }
 }
 
 // MARK: - Table View Delegate
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cellIdentifier = "SearchResultCell"
+        
+        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+        }
+        cell.textLabel!.text = searchResults[indexPath.row]
+        return cell
     }
     
     
