@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "app icon.png",
+      "filename" : "Toe Beans Logo No cofee.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Toe Beans Logo No cofee@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Toe Beans Logo No cofee@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

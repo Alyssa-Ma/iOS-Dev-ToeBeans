@@ -58,7 +58,7 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
                                 <state key="normal" title="?" backgroundImage="BlueButton"/>
                                 <connections>
-                                    <segue destination="v6x-Ux-cOS" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="VNW-Vc-VrF"/>
+                                    <segue destination="v6x-Ux-cOS" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="VNW-Vc-VrF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Toe Beans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkY-d6-Vsk">
@@ -137,6 +137,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lg4-Yh-2LG" userLabel="Pink Back">
+                                <rect key="frame" x="0.0" y="669" width="390" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.75706934930000003" blue="0.98840230699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C8q-Ug-agd" userLabel="Blue Back">
+                                <rect key="frame" x="0.0" y="269" width="390" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="iVI-Hi-cvo">
+                                        <rect key="frame" x="32" y="8" width="327" height="385"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Toe Beans is a simple app. This app has a search field that allows a user to search for nearby cat cafes, animal shelters, or coffee shops (hence, the name), or the user can use their current location to do so. This app also features an easily readable review section for each location, and a rating section. Lastly, this app features a favorite feature, where the user can save their favorite locations and access them easily with one button. This information is saved using CoreData.</string>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.57672733070000004" green="0.83004999160000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="189-ij-Jmz" userLabel="Purple Back">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="269"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is Toe Beans?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVy-Sa-pth">
+                                        <rect key="frame" x="23" y="169" width="344" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.75877553220000005" green="0.70821577309999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFR-s0-bH9">
                                 <rect key="frame" x="111" y="710" width="168" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -145,25 +180,13 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="close" destination="v6x-Ux-cOS" eventType="touchUpInside" id="zOj-fC-4Zg"/>
+                                    <action selector="close" destination="v6x-Ux-cOS" eventType="touchUpInside" id="IbK-Kx-Hg0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is Toe Beans?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVy-Sa-pth">
-                                <rect key="frame" x="100" y="244" width="191" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Toe Beans Logo" translatesAutoresizingMaskIntoConstraints="NO" id="88t-5r-KY6">
+                                <rect key="frame" x="82" y="44" width="227" height="121"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="iVI-Hi-cvo">
-                                <rect key="frame" x="49" y="292" width="292" height="386"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Toe Beans is a simple app. This app has a search field that allows a user to search for nearby cat cafes, animal shelters, or coffee shops (hence, the name), or the user can use their current location to do so. This app also features an easily readable review section for each location, and a rating section. Lastly, this app features a favorite feature, where the user can save their favorite locations and access them easily with one button. This information is saved using CoreData.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KQe-em-Z24"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -221,11 +244,8 @@
         <image name="BlueButton" width="72" height="72"/>
         <image name="HeartButton" width="72" height="72"/>
         <image name="SearchButton" width="216" height="72"/>
-        <image name="Toe Beans Logo" width="88" height="80"/>
+        <image name="Toe Beans Logo" width="87" height="80"/>
         <image name="coffee cup" width="211" height="235"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
