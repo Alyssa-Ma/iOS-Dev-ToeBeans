@@ -54,7 +54,11 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - Table View Delegate
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        if searchResults.count == 0 {
+            return 1
+        } else {
+            return searchResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,9 +68,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
-        let searchResult = searchResults[indexPath.row]
-        cell.textLabel!.text = searchResult.name
-        cell.detailTextLabel!.text = searchResult.artistName
+        //handle no results or search failed
+        if searchResults.count == 0 {
+            cell.textLabel!.text = "(Nothing found)"
+            cell.detailTextLabel!.text = ""
+        } else {
+            let searchResult = searchResults[indexPath.row]
+            cell.textLabel!.text = searchResult.name
+            cell.detailTextLabel!.text = searchResult.artistName
+        }
         return cell
     }
     
