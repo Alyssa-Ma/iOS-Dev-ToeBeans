@@ -22,4 +22,12 @@ class SearchViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
 
+
+}
+
+// MARK: - Search Bar Delegate
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("The search text is: '\(searchBar.text!)'")
+    }
 }

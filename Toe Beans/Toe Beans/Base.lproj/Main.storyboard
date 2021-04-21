@@ -159,6 +159,9 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kp5-cu-EiR">
                                 <rect key="frame" x="0.0" y="44" width="390" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="l77-BN-N0s" id="NiJ-7t-UNJ"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NnD-dj-muo"/>
