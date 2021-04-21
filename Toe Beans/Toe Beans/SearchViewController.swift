@@ -28,6 +28,8 @@ class SearchViewController: UIViewController {
 // MARK: - Search Bar Delegate
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //dismisses keyboard after pressing search
+        searchBar.resignFirstResponder()
         //array to hold search results
         searchResults = []
         for i in 0...2 {
@@ -35,6 +37,11 @@ extension SearchViewController: UISearchBarDelegate {
         }
         //reloads table view to make new rows visible
         tableView.reloadData()
+    }
+    
+    //fixes white line right above search bar
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }
 
