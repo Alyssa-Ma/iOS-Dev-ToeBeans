@@ -32,11 +32,14 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         //array to hold search results
         searchResults = []
-        for i in 0...2 {
-            let searchResult = SearchResult()
-            searchResult.name = String(format: "Fake Result %d for", i)
-            searchResult.artistName = searchBar.text!
-            searchResults.append(searchResult)
+        //fake handle for no results
+        if searchBar.text! != "justin bieber" {
+            for i in 0...2 {
+                let searchResult = SearchResult()
+                searchResult.name = String(format: "Fake Result %d for", i)
+                searchResult.artistName = searchBar.text!
+                searchResults.append(searchResult)
+            }
         }
         //reloads table view to make new rows visible
         tableView.reloadData()
