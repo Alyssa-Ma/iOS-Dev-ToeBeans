@@ -16,14 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PurpleBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EjS-TQ-0FU">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PurpleBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EjS-TQ-0FU">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="6s9-Rh-JGB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="6s9-Rh-JGB">
                                 <rect key="frame" x="0.0" y="249" width="390" height="844"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bNe-cp-iwt">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PinkBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bNe-cp-iwt">
                                 <rect key="frame" x="0.0" y="661" width="390" height="844"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Toe Beans Logo" translatesAutoresizingMaskIntoConstraints="NO" id="IwY-Am-84b">
                                 <rect key="frame" x="82" y="44" width="227" height="121"/>
@@ -59,8 +62,9 @@
                                     <segue destination="v6x-Ux-cOS" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="VNW-Vc-VrF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Toe Beans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkY-d6-Vsk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Toe Beans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkY-d6-Vsk">
                                 <rect key="frame" x="106" y="169" width="179" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -68,24 +72,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6s9-Rh-JGB" firstAttribute="top" secondItem="FkY-d6-Vsk" secondAttribute="bottom" constant="8" symbolic="YES" id="2Bb-wB-XNg"/>
-                            <constraint firstItem="EjS-TQ-0FU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ADC-rf-l1w"/>
-                            <constraint firstAttribute="bottom" secondItem="EjS-TQ-0FU" secondAttribute="bottom" id="Ga8-3r-ZFq"/>
-                            <constraint firstItem="6s9-Rh-JGB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JCb-8V-kgk"/>
-                            <constraint firstAttribute="bottom" secondItem="bNe-cp-iwt" secondAttribute="bottom" constant="-661" id="JMS-oi-CCj"/>
-                            <constraint firstItem="EjS-TQ-0FU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JwO-pN-neL"/>
-                            <constraint firstItem="6s9-Rh-JGB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="S63-yB-kdW"/>
-                            <constraint firstItem="6s9-Rh-JGB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="249" id="Ucg-Pg-5bE"/>
-                            <constraint firstItem="6s9-Rh-JGB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V53-MN-50J"/>
-                            <constraint firstAttribute="bottom" secondItem="6s9-Rh-JGB" secondAttribute="bottom" constant="-249" id="XIT-50-NeJ"/>
-                            <constraint firstItem="6s9-Rh-JGB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Y05-Yo-9db"/>
-                            <constraint firstItem="EjS-TQ-0FU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="atp-wD-eUo"/>
-                            <constraint firstItem="bNe-cp-iwt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eoi-u2-R6b"/>
-                            <constraint firstAttribute="bottom" secondItem="6s9-Rh-JGB" secondAttribute="bottom" constant="-249" id="h8o-mY-nLP"/>
-                            <constraint firstItem="bNe-cp-iwt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="661" id="msd-Mh-wZp"/>
-                            <constraint firstItem="bNe-cp-iwt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rui-GX-JNX"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -198,7 +184,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kp5-cu-EiR">
-                                <rect key="frame" x="0.0" y="44" width="366" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="l77-BN-N0s" id="NiJ-7t-UNJ"/>
