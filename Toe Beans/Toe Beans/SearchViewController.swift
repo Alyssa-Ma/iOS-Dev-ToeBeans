@@ -10,6 +10,8 @@ import UIKit
 class SearchViewController: UIViewController {
     //search result array
     var searchResults = [SearchResult]()
+    //bool if user has done a search
+    var hasSearched = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,8 @@ extension SearchViewController: UISearchBarDelegate {
                 searchResults.append(searchResult)
             }
         }
+        //user has done a search
+        hasSearched = true
         //reloads table view to make new rows visible
         tableView.reloadData()
     }
@@ -54,7 +58,9 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - Table View Delegate
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchResults.count == 0 {
+        if !hasSearched{
+            return 0
+        } else if searchResults.count == 0 {
             return 1
         } else {
             return searchResults.count
