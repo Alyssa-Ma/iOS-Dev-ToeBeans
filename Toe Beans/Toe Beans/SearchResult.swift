@@ -8,6 +8,6 @@
 import Foundation
 
 class SearchResult {
-    var name = ""
-    var artistName = ""
+    var companyName = ""
+    var locationName = ""
 }
