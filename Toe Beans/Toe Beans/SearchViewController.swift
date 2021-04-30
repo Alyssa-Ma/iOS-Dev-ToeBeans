@@ -32,6 +32,9 @@ class SearchViewController: UIViewController {
         //nothing found nib
         cellNib = UINib(nibName: TableView.CellIdentifiers.nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
+        
+        //keyboard on launch
+        searchBar.becomeFirstResponder()
     }
     
 
