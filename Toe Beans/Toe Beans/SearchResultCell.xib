@@ -9,41 +9,77 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" id="8hS-WH-ebQ" customClass="SearchResultCell" customModule="Toe_Beans" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8hS-WH-ebQ" id="wXI-NH-18r">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OdE-cQ-02M">
-                        <rect key="frame" x="16" y="10" width="60" height="60"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hkD-FT-eoF">
+                        <rect key="frame" x="103" y="55" width="185" height="98"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="185" id="Myz-hv-9tc"/>
+                            <constraint firstAttribute="height" constant="98" id="gJs-c1-EW7"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHN-S5-ufn">
-                        <rect key="frame" x="84" y="16" width="275" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORl-Hp-kb0">
+                        <rect key="frame" x="302" y="68" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="F9p-Wn-dK5"/>
+                            <constraint firstAttribute="width" constant="72" id="tCG-4E-p7Z"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="ReviewButton"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N77-ah-GdU">
+                        <rect key="frame" x="16" y="207" width="358" height="24"/>
+                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49E-P8-hka">
-                        <rect key="frame" x="84" y="44" width="275" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ML-hA-Nyg">
+                        <rect key="frame" x="16" y="178" width="358" height="27.333333333333343"/>
+                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqv-Xt-y0K">
+                        <rect key="frame" x="16" y="68" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="Wrn-DX-3f8"/>
+                            <constraint firstAttribute="width" constant="72" id="iI1-qg-oNs"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="HeartButtonPink"/>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="hkD-FT-eoF" firstAttribute="leading" secondItem="qqv-Xt-y0K" secondAttribute="trailing" constant="15" id="2h5-uh-h0e"/>
+                    <constraint firstAttribute="trailing" secondItem="6ML-hA-Nyg" secondAttribute="trailing" constant="16" id="2pF-9U-BZq"/>
+                    <constraint firstItem="6ML-hA-Nyg" firstAttribute="top" secondItem="hkD-FT-eoF" secondAttribute="bottom" constant="25" id="7xo-tI-W8Y"/>
+                    <constraint firstItem="ORl-Hp-kb0" firstAttribute="top" secondItem="wXI-NH-18r" secondAttribute="top" constant="68" id="EYi-FN-ZXT"/>
+                    <constraint firstItem="hkD-FT-eoF" firstAttribute="top" secondItem="wXI-NH-18r" secondAttribute="top" constant="55" id="HPO-5e-2GZ"/>
+                    <constraint firstItem="ORl-Hp-kb0" firstAttribute="leading" secondItem="hkD-FT-eoF" secondAttribute="trailing" constant="14" id="NNS-yl-oKH"/>
+                    <constraint firstAttribute="trailing" secondItem="N77-ah-GdU" secondAttribute="trailing" constant="16" id="P6L-gd-LAC"/>
+                    <constraint firstItem="qqv-Xt-y0K" firstAttribute="top" secondItem="wXI-NH-18r" secondAttribute="top" constant="68" id="af9-le-oha"/>
+                    <constraint firstItem="hkD-FT-eoF" firstAttribute="leading" secondItem="qqv-Xt-y0K" secondAttribute="trailing" constant="15" id="bIm-ID-7XI"/>
+                    <constraint firstItem="N77-ah-GdU" firstAttribute="top" secondItem="6ML-hA-Nyg" secondAttribute="bottom" constant="1.6699999999999999" id="e5x-DB-ysr"/>
+                    <constraint firstAttribute="bottom" secondItem="N77-ah-GdU" secondAttribute="bottom" constant="19" id="qqx-z7-THj"/>
+                    <constraint firstItem="N77-ah-GdU" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="sre-Hb-Lty"/>
+                    <constraint firstAttribute="trailing" secondItem="ORl-Hp-kb0" secondAttribute="trailing" constant="16" id="uDo-sd-Tid"/>
+                    <constraint firstItem="qqv-Xt-y0K" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="xjG-Gc-0O9"/>
+                    <constraint firstItem="ORl-Hp-kb0" firstAttribute="leading" secondItem="hkD-FT-eoF" secondAttribute="trailing" constant="14" id="ysN-eT-610"/>
+                    <constraint firstItem="6ML-hA-Nyg" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="zd4-1q-tyA"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="artistNameLabel" destination="49E-P8-hka" id="lgg-zg-cPn"/>
-                <outlet property="artworkImageView" destination="OdE-cQ-02M" id="q1t-oE-Kje"/>
-                <outlet property="nameLabel" destination="LHN-S5-ufn" id="hHN-8w-LDs"/>
+                <outlet property="businessImageView" destination="hkD-FT-eoF" id="zzG-Y7-u9A"/>
+                <outlet property="companyNameLabel" destination="6ML-hA-Nyg" id="0pX-jn-87i"/>
+                <outlet property="locationLabel" destination="N77-ah-GdU" id="6nm-E8-ulp"/>
             </connections>
-            <point key="canvasLocation" x="-975" y="-82"/>
+            <point key="canvasLocation" x="-976" y="-82.019704433497537"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="square" catalog="system" width="128" height="114"/>
+        <image name="HeartButtonPink" width="72" height="72"/>
+        <image name="ReviewButton" width="72" height="72"/>
     </resources>
 </document>

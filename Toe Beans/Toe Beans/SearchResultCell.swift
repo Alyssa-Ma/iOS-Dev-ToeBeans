@@ -21,7 +21,8 @@ class SearchResultCell: UITableViewCell {
     }
 
     // MARK:- Outlet Properties
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var artistNameLabel: UILabel!
-    @IBOutlet var artworkImageView: UIImageView!
+    @IBOutlet var businessImageView: UIImageView!
+    @IBOutlet var companyNameLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
+    
 }
