@@ -17,6 +17,7 @@
 		2A2EE65B262FC07B00CA8913 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */; };
 		2A5595F92630ED3800FB7328 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5595F82630ED3800FB7328 /* SearchResult.swift */; };
 		2AECE33E263BC2FE0033AF06 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AECE33D263BC2FE0033AF06 /* SearchResultCell.xib */; };
+		2AECE341263BC6120033AF06 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AECE340263BC6120033AF06 /* SearchResultCell.swift */; };
 		2AF1EB4D262E3B30009489F3 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1EB4C262E3B30009489F3 /* AboutViewController.swift */; };
 		2AF1EB50262E45D5009489F3 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1EB4F262E45D5009489F3 /* FavoriteTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2A5595F82630ED3800FB7328 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		2AECE33D263BC2FE0033AF06 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		2AECE340263BC6120033AF06 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		2AF1EB4C262E3B30009489F3 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		2AF1EB4F262E45D5009489F3 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 				2A0ED6192627B9BA005CAB59 /* Main.storyboard */,
 				2AECE33D263BC2FE0033AF06 /* SearchResultCell.xib */,
 				2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */,
+				2AECE340263BC6120033AF06 /* SearchResultCell.swift */,
 				2A5595F82630ED3800FB7328 /* SearchResult.swift */,
 				2AF1EB4F262E45D5009489F3 /* FavoriteTableViewController.swift */,
 				2AF1EB4C262E3B30009489F3 /* AboutViewController.swift */,
@@ -163,6 +166,7 @@
 				2A0ED61E2627B9BA005CAB59 /* Toe_Beans.xcdatamodeld in Sources */,
 				2AF1EB4D262E3B30009489F3 /* AboutViewController.swift in Sources */,
 				2A0ED6162627B9BA005CAB59 /* SceneDelegate.swift in Sources */,
+				2AECE341263BC6120033AF06 /* SearchResultCell.swift in Sources */,
 				2AF1EB50262E45D5009489F3 /* FavoriteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
