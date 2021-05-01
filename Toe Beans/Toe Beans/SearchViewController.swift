@@ -61,40 +61,41 @@ extension SearchViewController: UISearchBarDelegate {
             //reloads table view to make new rows visible
             tableView.reloadData()
         }
-        /**
+        
         // MARK: - Geocode API Handling
         //convert user input to be api friendly
         let convertedInput = searchBar.text?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let url = URL(string: "https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=Henry%20street%20New%20York&format=json&accept-language=en&polygon_threshold=0.0")
-        print(url)
+        let geoUrl = URL(string: "https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=" + convertedInput! + "&format=json&accept-language=en&polygon_threshold=0.0")
+        //debug url
+        print(geoUrl)
         //protect from getting nil url
-        guard url != nil else {
+        guard geoUrl != nil else {
             print("Error creating url obj")
             return
         }
         
         //URL Request
-        var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        var geoRequest = URLRequest(url: geoUrl!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         
         //Header
-        let header = ["x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
+        let geoHeader = ["x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
                       "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com"]
         
-        request.allHTTPHeaderFields = header
+        geoRequest.allHTTPHeaderFields = geoHeader
         
         //Req type
-        request.httpMethod = "GET"
+        geoRequest.httpMethod = "GET"
         
         //URL Session
         let session = URLSession.shared
         
         //Data task
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
+        let geoDataTask = session.dataTask(with: geoRequest) { (data, response, error) in
             //if no errors and there is some data
             if error == nil && data != nil {
                 do {
                     //parse data
-                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
+                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                     print(dictionary)
                 }
                 catch {
@@ -102,9 +103,11 @@ extension SearchViewController: UISearchBarDelegate {
                 }
             }
         }
-        dataTask.resume()
-         */
-        
+       
+        geoDataTask.resume()
+         
+         
+        /**
         // MARK: - Cafe API Handling
         //Cafe URL
         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + searchBar.text! + "&language=en&radius=150&type=cafe")
@@ -144,7 +147,7 @@ extension SearchViewController: UISearchBarDelegate {
             }
         }
         dataTask.resume()
-        
+        */
     }
     //fixes white line right above search bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
