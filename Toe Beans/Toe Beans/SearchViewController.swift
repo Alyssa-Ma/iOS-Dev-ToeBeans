@@ -4,7 +4,7 @@
 //
 //  Created by Alyssa Ma on 4/20/21.
 //
-
+import Foundation
 import UIKit
 
 class SearchViewController: UIViewController {
@@ -18,6 +18,12 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     //bool if user has done a search
     var hasSearched = false
+    
+    //Api links
+    let headers = [
+        "x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
+        "x-rapidapi-host": "trueway-places.p.rapidapi.com"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,25 +53,40 @@ class SearchViewController: UIViewController {
 // MARK: - Search Bar Delegate
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //dismisses keyboard after pressing search
-        searchBar.resignFirstResponder()
-        //array to hold search results
-        searchResults = []
-        //fake handle for no results
-        if searchBar.text! != "justin bieber" {
-            for i in 0...2 {
-                let searchResult = SearchResult()
-                searchResult.companyName = String(format: "Fake Result %d for", i)
-                searchResult.locationName = searchBar.text!
-                searchResults.append(searchResult)
-            }
+        if !searchBar.text!.isEmpty {
+            //dismisses keyboard after pressing search
+            searchBar.resignFirstResponder()
+            //user has done a search
+            hasSearched = true
+            //array to hold search results
+            searchResults = []
+            
+            
+            let request = NSMutableURLRequest(url: NSURL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=cafe")! as URL,
+                                                    cachePolicy: .useProtocolCachePolicy,
+                                                timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if (error != nil) {
+                    print(error)
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    print(httpResponse)
+                }
+            })
+            
+            /**
+            dataTask.resume()
+            let url = apiURL(searchText: searchBar.text!)
+            print("URL: '\(url)'")
+             */
+            //reloads table view to make new rows visible
+            tableView.reloadData()
         }
-        //user has done a search
-        hasSearched = true
-        //reloads table view to make new rows visible
-        tableView.reloadData()
     }
-    
     //fixes white line right above search bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
@@ -113,5 +134,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
+    // MARK: - Helper Methods
+    func apiURL(searchText: String) -> URL {
+        let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        let urlString = String(format: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=%@", encodedText)
+        let url = URL(string: urlString)
+        return url!
+    }
 }
