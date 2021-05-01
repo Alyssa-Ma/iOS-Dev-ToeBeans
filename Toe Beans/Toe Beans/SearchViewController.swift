@@ -41,8 +41,6 @@ class SearchViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
-    
-
 }
 
 
@@ -94,16 +92,29 @@ extension SearchViewController: UISearchBarDelegate {
             //if no errors and there is some data
             if error == nil && data != nil {
                 do {
-                    //parse data
+                    //set as dictionary
                     let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                     print(dictionary)
+                    
+                    for dictionary in dictionary {
+                        
+                    }
+                    //parsing
+                    do {
+                        let decoder = JSONDecoder()
+                        let geoResult = try decoder.decode(GeoResult.self, from: data!)
+                        print(geoResult)
+                    }
+                    catch {
+                        print("Error decoding")
+                    }
                 }
                 catch {
                     print("Error parsing response data")
                 }
             }
         }
-       
+        //api call
         geoDataTask.resume()
          
          
@@ -177,8 +188,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
             let searchResult = searchResults[indexPath.row]
-            cell.companyNameLabel.text = searchResult.companyName
-            cell.locationLabel.text = searchResult.locationName
+            //cell.companyNameLabel.text = searchResult.results.name
+            //cell.locationLabel.text = searchResult.locationName
         }
         return cell
     }

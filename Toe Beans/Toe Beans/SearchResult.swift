@@ -8,7 +8,7 @@
 import Foundation
 
 //hold the latitude and longitude values
-class GeoResul: Codable {
+class GeoResult: Codable {
     var lat: String? = ""
     var lon: String? = ""
 }
