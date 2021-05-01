@@ -19,12 +19,6 @@ class SearchViewController: UIViewController {
     //bool if user has done a search
     var hasSearched = false
     
-    //Api links
-    let headers = [
-        "x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
-        "x-rapidapi-host": "trueway-places.p.rapidapi.com"
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,14 +35,55 @@ class SearchViewController: UIViewController {
         
         //keyboard on launch
         searchBar.becomeFirstResponder()
+        
+        //URL
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=cafe")
+        //protect from getting nil url
+        guard url != nil else {
+            print("Error creating url obj")
+            return
+        }
+        
+        //URL Request
+        var request	= URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        
+        //Header
+        let header = ["x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
+                       "x-rapidapi-host": "trueway-places.p.rapidapi.com"]
+        
+        request.allHTTPHeaderFields = header
+        
+        //Req type
+        request.httpMethod = "GET"
+        
+        //URL Session
+        let session = URLSession.shared
+        
+        //Data task
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            //if no errors and there is some data
+            if error == nil && data != nil {
+                do {
+                    //parse data
+                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
+                    print(dictionary)
+                }
+                catch {
+                    print("Error parsing response data")
+                }
+            }
+        }
+        dataTask.resume()
     }
     
 
     // MARK: - IB Outlets
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    
 
 }
+
 
 // MARK: - Search Bar Delegate
 extension SearchViewController: UISearchBarDelegate {
@@ -62,27 +97,6 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             
             
-            let request = NSMutableURLRequest(url: NSURL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=cafe")! as URL,
-                                                    cachePolicy: .useProtocolCachePolicy,
-                                                timeoutInterval: 10.0)
-            request.httpMethod = "GET"
-            request.allHTTPHeaderFields = headers
-
-            let session = URLSession.shared
-            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-                if (error != nil) {
-                    print(error)
-                } else {
-                    let httpResponse = response as? HTTPURLResponse
-                    print(httpResponse)
-                }
-            })
-            
-            /**
-            dataTask.resume()
-            let url = apiURL(searchText: searchBar.text!)
-            print("URL: '\(url)'")
-             */
             //reloads table view to make new rows visible
             tableView.reloadData()
         }
@@ -132,13 +146,5 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return indexPath
         }
-    }
-    
-    // MARK: - Helper Methods
-    func apiURL(searchText: String) -> URL {
-        let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let urlString = String(format: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=%@", encodedText)
-        let url = URL(string: urlString)
-        return url!
     }
 }
