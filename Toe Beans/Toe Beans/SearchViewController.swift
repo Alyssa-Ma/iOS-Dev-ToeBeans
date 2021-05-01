@@ -35,6 +35,32 @@ class SearchViewController: UIViewController {
         
         //keyboard on launch
         searchBar.becomeFirstResponder()
+    }
+    
+
+    // MARK: - IB Outlets
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var tableView: UITableView!
+    
+
+}
+
+
+// MARK: - Search Bar Delegate
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if !searchBar.text!.isEmpty {
+            //dismisses keyboard after pressing search
+            searchBar.resignFirstResponder()
+            //user has done a search
+            hasSearched = true
+            //array to hold search results
+            searchResults = []
+            
+            
+            //reloads table view to make new rows visible
+            tableView.reloadData()
+        }
         
         //URL
         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=cafe")
@@ -45,7 +71,7 @@ class SearchViewController: UIViewController {
         }
         
         //URL Request
-        var request	= URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        var request    = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         
         //Header
         let header = ["x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
@@ -74,32 +100,6 @@ class SearchViewController: UIViewController {
             }
         }
         dataTask.resume()
-    }
-    
-
-    // MARK: - IB Outlets
-    @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var tableView: UITableView!
-    
-
-}
-
-
-// MARK: - Search Bar Delegate
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if !searchBar.text!.isEmpty {
-            //dismisses keyboard after pressing search
-            searchBar.resignFirstResponder()
-            //user has done a search
-            hasSearched = true
-            //array to hold search results
-            searchResults = []
-            
-            
-            //reloads table view to make new rows visible
-            tableView.reloadData()
-        }
     }
     //fixes white line right above search bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
