@@ -62,6 +62,7 @@ extension SearchViewController: UISearchBarDelegate {
             tableView.reloadData()
         }
         
+        // MARK: - Cafe API Handling
         //Cafe URL
         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + searchBar.text! + "&language=en&radius=150&type=cafe")
         //protect from getting nil url
