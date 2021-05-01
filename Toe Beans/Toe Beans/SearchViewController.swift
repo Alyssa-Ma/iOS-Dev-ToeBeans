@@ -63,7 +63,7 @@ extension SearchViewController: UISearchBarDelegate {
         }
         
         //URL
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=cafe")
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=37.783366%2C-122.402325&language=en&radius=150&type=" + searchBar.text!)
         //protect from getting nil url
         guard url != nil else {
             print("Error creating url obj")
