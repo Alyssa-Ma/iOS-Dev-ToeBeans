@@ -14,13 +14,14 @@ class SearchViewController: UIViewController {
             static let nothingFoundCell = "NothingFoundCell"
         }
     }
-    //
-    var geoLat: String = ""
-    var geoLon: String = ""
+    
     //search result array
     var searchResults = [SearchResult]()
     //bool if user has done a search
     var hasSearched = false
+    //
+    var geoLat: String
+    var geoLon: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,7 @@ extension SearchViewController: UISearchBarDelegate {
         let convertedInput = searchBar.text?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let geoUrl = URL(string: "https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=" + convertedInput! + "&format=json&accept-language=en&polygon_threshold=0.0")
         //debug url
-        print(geoUrl)
+        //print(geoUrl)
         //protect from getting nil url
         guard geoUrl != nil else {
             print("Error creating url obj")
@@ -88,24 +89,24 @@ extension SearchViewController: UISearchBarDelegate {
         geoRequest.httpMethod = "GET"
         
         //URL Session
-        let session = URLSession.shared
+        let geoSession = URLSession.shared
         
         //Data task
-        let geoDataTask = session.dataTask(with: geoRequest) { [self] (data, response, error) in
+        let geoDataTask = geoSession.dataTask(with: geoRequest) { [self] (data, response, error) in
             //guard in case of fail
             guard let data = data else {return}
             do {
                 //decode the json
                 let geoData = try JSONDecoder().decode([Location].self, from: data)
                 //testing
-                print("geo data??")
-                print(geoData)
+                //print("geo data??")
+                //print(geoData)
                 //set first result to the longitude and latitude
-                geoLat.self = geoData[0].lat
-                geoLon.self = geoData[0].lon
+                geoLat = geoData[0].lat
+                geoLon = geoData[0].lon
                 //testing
-                print("geo lat " + geoLat.self)
-                print("geo long " + geoLon.self)
+                //print("geo lat " + geoLat.self)
+                //print("geo long " + geoLon.self)
             }
             //error message
             catch let jsonErr {
@@ -114,10 +115,12 @@ extension SearchViewController: UISearchBarDelegate {
         }
         //api call
         geoDataTask.resume()
-        /**
+        
         // MARK: - Cafe API Handling
-        //Cafe URL
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" +  + "&language=en&radius=150&type=cafe")
+        print("test geo lat" + geoLat.self)
+        //Cafe URL with latitude and longitude from previous api
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + geoLat.self + "," + geoLon.self + "&language=en&radius=150&type=cafe")
+        print(url)
         //protect from getting nil url
         guard url != nil else {
             print("Error creating url obj")
@@ -130,7 +133,7 @@ extension SearchViewController: UISearchBarDelegate {
         //Header
         let header = ["x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
                        "x-rapidapi-host": "trueway-places.p.rapidapi.com"]
-        
+        print(header)
         request.allHTTPHeaderFields = header
         
         //Req type
@@ -142,6 +145,7 @@ extension SearchViewController: UISearchBarDelegate {
         //Data task
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             //if no errors and there is some data
+            print("test??")
             if error == nil && data != nil {
                 do {
                     //parse data
@@ -154,7 +158,6 @@ extension SearchViewController: UISearchBarDelegate {
             }
         }
         dataTask.resume()
-        */
     }
     //fixes white line right above search bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
