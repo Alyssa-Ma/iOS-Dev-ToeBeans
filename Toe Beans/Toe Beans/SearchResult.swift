@@ -7,25 +7,9 @@
 
 import Foundation
 
-//hold the latitude and longitude values
-class GeoResult: Codable {
-    var lat: String? = ""
-    var lon: String? = ""
-}
-
-//hold results from api
-class ResultArray: Codable {
-    var resultCount = 0
-    var results = [SearchResult]()
-    
-}
-
-//search result for places nearby
-class SearchResult: Codable {
-    var name: String? = ""
-    var address: String? = ""
-    
-    var location: String {
-        return address ?? ""
-    }
+//hold api result of places found
+struct SearchResult: Decodable {
+    let name: String
+    let address: String
+    let location: String
 }

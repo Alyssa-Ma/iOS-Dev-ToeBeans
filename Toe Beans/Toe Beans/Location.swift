@@ -7,6 +7,7 @@
 
 import Foundation
 
+//for parsing long and lat
 struct Location: Decodable {
     let lat: String
     let lon: String

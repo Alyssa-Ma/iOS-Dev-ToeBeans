@@ -14,8 +14,9 @@ class SearchViewController: UIViewController {
             static let nothingFoundCell = "NothingFoundCell"
         }
     }
-    //location result array
-    var locationResults = [Location]()
+    //
+    var geoLat: String = ""
+    var geoLon: String = ""
     //search result array
     var searchResults = [SearchResult]()
     //bool if user has done a search
@@ -90,44 +91,33 @@ extension SearchViewController: UISearchBarDelegate {
         let session = URLSession.shared
         
         //Data task
-        let geoDataTask = session.dataTask(with: geoRequest) { (data, response, error) in
+        let geoDataTask = session.dataTask(with: geoRequest) { [self] (data, response, error) in
+            //guard in case of fail
             guard let data = data else {return}
             do {
+                //decode the json
                 let geoData = try JSONDecoder().decode([Location].self, from: data)
+                //testing
                 print("geo data??")
                 print(geoData)
+                //set first result to the longitude and latitude
+                geoLat.self = geoData[0].lat
+                geoLon.self = geoData[0].lon
+                //testing
+                print("geo lat " + geoLat.self)
+                print("geo long " + geoLon.self)
             }
+            //error message
             catch let jsonErr {
                 print("error parsing json")
             }
-            /**
-            //if no errors and there is some data
-            if error == nil && data != nil {
-                do {
-                    /**/
-                    //set as dictionary
-                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                    print(dictionary)
-                    
-                    //parsing
-
-                }
-                catch {
-                    print("Error parsing response data")
-                }
-            }
-             */
         }
-        print("location results")
-        print(locationResults)
         //api call
         geoDataTask.resume()
-         
-         
         /**
         // MARK: - Cafe API Handling
         //Cafe URL
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + searchBar.text! + "&language=en&radius=150&type=cafe")
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" +  + "&language=en&radius=150&type=cafe")
         //protect from getting nil url
         guard url != nil else {
             print("Error creating url obj")
