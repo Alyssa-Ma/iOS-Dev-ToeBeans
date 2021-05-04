@@ -8,6 +8,6 @@
 import Foundation
 
 struct Location: Decodable {
-    var lat: String? = ""
-    var lon: String? = ""
+    let lat: String
+    let lon: String
 }

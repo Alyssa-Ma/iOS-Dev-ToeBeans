@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
             static let nothingFoundCell = "NothingFoundCell"
         }
     }
+    //location result array
+    var locationResults = [Location]()
     //search result array
     var searchResults = [SearchResult]()
     //bool if user has done a search
@@ -89,31 +91,35 @@ extension SearchViewController: UISearchBarDelegate {
         
         //Data task
         let geoDataTask = session.dataTask(with: geoRequest) { (data, response, error) in
+            guard let data = data else {return}
+            do {
+                let geoData = try JSONDecoder().decode([Location].self, from: data)
+                print("geo data??")
+                print(geoData)
+            }
+            catch let jsonErr {
+                print("error parsing json")
+            }
+            /**
             //if no errors and there is some data
             if error == nil && data != nil {
                 do {
+                    /**/
                     //set as dictionary
                     let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                     print(dictionary)
                     
-                    for dictionary in dictionary {
-                        
-                    }
                     //parsing
-                    do {
-                        let decoder = JSONDecoder()
-                        let geoResult = try decoder.decode(GeoResult.self, from: data!)
-                        print(geoResult)
-                    }
-                    catch {
-                        print("Error decoding")
-                    }
+
                 }
                 catch {
                     print("Error parsing response data")
                 }
             }
+             */
         }
+        print("location results")
+        print(locationResults)
         //api call
         geoDataTask.resume()
          
