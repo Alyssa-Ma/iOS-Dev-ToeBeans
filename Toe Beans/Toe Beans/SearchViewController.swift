@@ -20,8 +20,7 @@ class SearchViewController: UIViewController {
     //bool if user has done a search
     var hasSearched = false
     //
-    var geoLat: String
-    var geoLon: String
+    var geoLocation: Location!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,11 +101,11 @@ extension SearchViewController: UISearchBarDelegate {
                 //print("geo data??")
                 //print(geoData)
                 //set first result to the longitude and latitude
-                geoLat = geoData[0].lat
-                geoLon = geoData[0].lon
+                geoLocation.lat = geoData[0].lat
+                geoLocation.lon = geoData[0].lon
                 //testing
-                //print("geo lat " + geoLat.self)
-                //print("geo long " + geoLon.self)
+                print("geo lat " + geoLocation.lat)
+                print("geo long " + geoLocation.lon)
             }
             //error message
             catch let jsonErr {
@@ -116,10 +115,11 @@ extension SearchViewController: UISearchBarDelegate {
         //api call
         geoDataTask.resume()
         
+        /**
         // MARK: - Cafe API Handling
-        print("test geo lat" + geoLat.self)
+        print("test geo lat" + geoLocation.lat)
         //Cafe URL with latitude and longitude from previous api
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + geoLat.self + "," + geoLon.self + "&language=en&radius=150&type=cafe")
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + geoLocation.lat + "," + geoLocation.lon + "&language=en&radius=150&type=cafe")
         print(url)
         //protect from getting nil url
         guard url != nil else {
@@ -158,6 +158,7 @@ extension SearchViewController: UISearchBarDelegate {
             }
         }
         dataTask.resume()
+         */
     }
     //fixes white line right above search bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
