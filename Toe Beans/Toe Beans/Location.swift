@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Location: Codable {
+struct Location: Decodable {
     var lat: String? = ""
     var lon: String? = ""
 }
