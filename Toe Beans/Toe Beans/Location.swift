@@ -9,6 +9,6 @@ import Foundation
 
 //for parsing long and lat
 struct Location: Decodable {
-    var lat: String
-    var lon: String
+    let lat: String
+    let lon: String
 }

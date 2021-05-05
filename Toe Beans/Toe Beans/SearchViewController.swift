@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
     //bool if user has done a search
     var hasSearched = false
     //
-    var geoLocation: Location!
+    var geoLocation: [Location] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,14 +98,14 @@ extension SearchViewController: UISearchBarDelegate {
                 //decode the json
                 let geoData = try JSONDecoder().decode([Location].self, from: data)
                 //testing
-                //print("geo data??")
-                //print(geoData)
+                print("geo data??")
+                print(geoData)
                 //set first result to the longitude and latitude
-                geoLocation.lat = geoData[0].lat
-                geoLocation.lon = geoData[0].lon
+                geoLocation = geoData
+     
                 //testing
-                print("geo lat " + geoLocation.lat)
-                print("geo long " + geoLocation.lon)
+                print("geo lat " + geoLocation[0].lat)
+                print("geo long " + geoLocation[0].lon)
             }
             //error message
             catch let jsonErr {
@@ -117,9 +117,9 @@ extension SearchViewController: UISearchBarDelegate {
         
         /**
         // MARK: - Cafe API Handling
-        print("test geo lat" + geoLocation.lat)
+        print("test geo lat" + geoLocation[0].lat)
         //Cafe URL with latitude and longitude from previous api
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + geoLocation.lat + "," + geoLocation.lon + "&language=en&radius=150&type=cafe")
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + geoLocation[0].lat + "," + geoLocation[0].lon + "&language=en&radius=150&type=cafe")
         print(url)
         //protect from getting nil url
         guard url != nil else {
