@@ -63,58 +63,6 @@ extension SearchViewController: UISearchBarDelegate {
             tableView.reloadData()
         }
         
-        // MARK: - Geocode API Handling
-        //convert user input to be api friendly
-        let convertedInput = searchBar.text?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let geoUrl = URL(string: "https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=" + convertedInput! + "&format=json&accept-language=en&polygon_threshold=0.0")
-        //debug url
-        //print(geoUrl)
-        //protect from getting nil url
-        guard geoUrl != nil else {
-            print("Error creating url obj")
-            return
-        }
-        
-        //URL Request
-        var geoRequest = URLRequest(url: geoUrl!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
-        
-        //Header
-        let geoHeader = ["x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
-                      "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com"]
-        
-        geoRequest.allHTTPHeaderFields = geoHeader
-        
-        //Req type
-        geoRequest.httpMethod = "GET"
-        
-        //URL Session
-        let geoSession = URLSession.shared
-        
-        //Data task
-        let geoDataTask = geoSession.dataTask(with: geoRequest) { [self] (data, response, error) in
-            //guard in case of fail
-            guard let data = data else {return}
-            do {
-                //decode the json
-                let geoData = try JSONDecoder().decode([Location].self, from: data)
-                //testing
-                print("geo data??")
-                print(geoData)
-                //set first result to the longitude and latitude
-                geoLocation = geoData
-     
-                //testing
-                print("geo lat " + geoLocation[0].lat)
-                print("geo long " + geoLocation[0].lon)
-            }
-            //error message
-            catch let jsonErr {
-                print("error parsing json")
-            }
-        }
-        //api call
-        geoDataTask.resume()
-        
         /**
         // MARK: - Cafe API Handling
         print("test geo lat" + geoLocation[0].lat)
