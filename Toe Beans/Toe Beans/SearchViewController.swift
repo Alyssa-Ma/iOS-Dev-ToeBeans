@@ -5,9 +5,10 @@
 //  Created by Alyssa Ma on 4/20/21.
 //
 import Foundation
+import CoreLocation
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, CLLocationManagerDelegate {
     struct TableView {
         struct CellIdentifiers {
             static let searchResultCell = "SearchResultCell"
@@ -19,8 +20,10 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     //bool if user has done a search
     var hasSearched = false
-    //
+    //geo loc array
     var geoLocation: [Location] = []
+    //object that will give gps coords, reference
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +43,31 @@ class SearchViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
-
     // MARK: - IB Outlets
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var getLocationButton: UIButton!
+    
+    // MARK: - Actions
+    //get user's current location at the start, can input a different one in the search bar
+    @IBAction func getLocation() {
+        //view controller is its delegate
+        locationManager.delegate = self
+        //receive locations with accuracy of 10 meters
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        //send location updates to delegate
+        locationManager.startUpdatingLocation()
+    }
+    
+    // MARK: - CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("didFailWithError \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations.last!
+        print("didUpdateLocations \(newLocation)")
+    }
 }
 
 

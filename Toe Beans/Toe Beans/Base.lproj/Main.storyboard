@@ -77,7 +77,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="KAR-iD-J4R"/>
+                    <tabBarItem key="tabBarItem" title="Tag" id="KAR-iD-J4R"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,6 +223,14 @@
                                     <outlet property="delegate" destination="l77-BN-N0s" id="NiJ-7t-UNJ"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfb-Kt-AYP">
+                                <rect key="frame" x="347" y="54.999999999999886" width="36" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="location.circle.fill" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NnD-dj-muo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -238,6 +246,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="getLocationButton" destination="jfb-Kt-AYP" id="myB-Qj-1mQ"/>
                         <outlet property="searchBar" destination="kp5-cu-EiR" id="CBc-Er-PSA"/>
                         <outlet property="tableView" destination="Pqu-Ye-Rcb" id="bYe-A1-yfI"/>
                     </connections>
@@ -270,6 +279,7 @@
         <image name="SearchButton" width="216" height="72"/>
         <image name="Toe Beans Logo" width="87" height="80"/>
         <image name="coffee cup" width="211" height="235"/>
+        <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="SearchBar">
             <color red="0.56862745098039214" green="0.83529411764705885" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
