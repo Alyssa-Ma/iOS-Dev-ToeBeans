@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RhJ-a0-30v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -50,7 +50,7 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
                                 <state key="normal" title="Search" backgroundImage="SearchButton"/>
                                 <connections>
-                                    <segue destination="l77-BN-N0s" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="F76-8o-1XG"/>
+                                    <segue destination="OAV-Wj-Hem" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="F76-8o-1XG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iV-w5-0je">
@@ -208,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pqu-Ye-Rcb">
-                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="l77-BN-N0s" id="P3T-5s-G0v"/>
@@ -230,6 +230,9 @@
                                 <state key="normal" backgroundImage="location.circle.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="getLocation" destination="l77-BN-N0s" eventType="touchUpInside" id="DTk-Sb-kSe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NnD-dj-muo"/>
@@ -245,32 +248,33 @@
                             <constraint firstItem="kp5-cu-EiR" firstAttribute="leading" secondItem="NnD-dj-muo" secondAttribute="leading" id="kq1-f0-2Nt"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Tag" id="Mco-PH-rqh"/>
                     <connections>
-                        <outlet property="getLocationButton" destination="jfb-Kt-AYP" id="myB-Qj-1mQ"/>
+                        <outlet property="getLocationButton" destination="jfb-Kt-AYP" id="I7R-9l-jqX"/>
                         <outlet property="searchBar" destination="kp5-cu-EiR" id="CBc-Er-PSA"/>
                         <outlet property="tableView" destination="Pqu-Ye-Rcb" id="bYe-A1-yfI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKJ-Og-hUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2569.2307692307691" y="88.151658767772503"/>
+            <point key="canvasLocation" x="3498.4615384615386" y="88.151658767772503"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="8S1-zS-yDN">
+        <scene sceneID="OrV-HP-Ifl">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RhJ-a0-30v" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="OAV-Wj-Hem" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V6h-W6-nLQ">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fya-ST-1vM">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hmK-nV-dsd"/>
+                        <segue destination="l77-BN-N0s" kind="relationship" relationship="viewControllers" id="qhp-ZE-xIK"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ds-kX-gmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HNP-lk-uzL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12.307692307692307" y="88.151658767772503"/>
+            <point key="canvasLocation" x="2569.2307692307691" y="88.151658767772503"/>
         </scene>
     </scenes>
     <resources>
