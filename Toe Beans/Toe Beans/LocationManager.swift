@@ -8,9 +8,7 @@
 import Foundation
 import CoreLocation
 
-//name of location and coords
 struct Location {
-    let title: String
     let coordinates: CLLocationCoordinate2D?
 }
 
@@ -46,9 +44,9 @@ class LocationManager: NSObject {
                 }
                 
                 print("place string test \(place)")
-                print("coord test \(place.location?.coordinate)")
+                print("coord test \(place.location!.coordinate)")
                 
-                let result = Location(title: name, coordinates: place.location?.coordinate)
+                let result = Location(coordinates: place.location?.coordinate)
                 return result
             })
             completion(models)

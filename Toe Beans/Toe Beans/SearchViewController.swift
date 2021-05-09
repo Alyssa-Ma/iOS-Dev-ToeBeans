@@ -36,7 +36,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     //bool if user wants to use own location
     var ownLocation = false
     //search location
-    var locations = [Location]()
+    var locations: [Location]!
     //strings to hold what to input for api
     var locationLat: String = ""
     var locationLong: String = ""
@@ -118,6 +118,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
             print("got a location")
             stopLocationManager()
+            //set the new coords
             locationLat = String(format: "%.8f", location!.coordinate.latitude)
             locationLong = String(format: "%.8f", location!.coordinate.longitude)
             print("own location str test \(locationLat) \(locationLong)")
@@ -156,21 +157,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    //create url based on clicked current loc button or search text
-    func createURL() {
-        if ownLocation == true {
-            locationLat = String(format: "%.8f", location!.coordinate.latitude)
-            locationLong = String(format: "%.8f", location!.coordinate.longitude)
-            print("own location \(locationLat) \(locationLong)")
-        }/**
-        else {
-            locationLat = String(format: "%.8f", locations[].coordinates?.latitude as! CVarArg)
-            locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
-        }
-         */
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + locationLat + "," + locationLong + "&language=en&radius=150&type=cafe")
-        print("url test \(url)")
-    }
+
     /**
     // MARK: - Cafe API Handling
     func APIHandling(){
@@ -178,7 +165,21 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         if ownLocation == true {
             
         }
-        
+     //create url based on clicked current loc button or search text
+     func createURL() {
+         if ownLocation == true {
+             locationLat = String(format: "%.8f", location!.coordinate.latitude)
+             locationLong = String(format: "%.8f", location!.coordinate.longitude)
+             print("own location \(locationLat) \(locationLong)")
+         }/**
+         else {
+             locationLat = String(format: "%.8f", locations[].coordinates?.latitude as! CVarArg)
+             locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
+         }
+          */
+         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + locationLat + "," + locationLong + "&language=en&radius=150&type=cafe")
+         print("url test \(url)")
+     }
         
         //Cafe URL with latitude and longitude from previous api
 
@@ -237,10 +238,21 @@ extension SearchViewController: UISearchBarDelegate {
             hasSearched = true
             //array to hold search results
             searchResults = []
+            //geocode search results
             LocationManager.shared.findLocations(with: searchBar.text!) {[weak self] locations in DispatchQueue.main.async {
+                //set to locations
                 self?.locations = locations
+                //print(locations.count)
+                if locations != nil
+                {
+                    //set the lat and long
+                    self!.locationLat = String(format: "%.8f", locations[0].coordinates!.latitude)
+                    self!.locationLong = String(format: "%.8f", locations[0].coordinates!.longitude)
+                    print("test search lat \(self!.locationLat)")
+                    print("test search long \(self!.locationLong)")
+                }
             }}
-            createURL()
+            
             //reloads table view to make new rows visible
             tableView.reloadData()
         }
