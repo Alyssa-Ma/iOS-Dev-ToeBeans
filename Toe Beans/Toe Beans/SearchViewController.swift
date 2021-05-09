@@ -27,6 +27,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var hasSearched = false
     //reference to object that gets GPS coords
     let locationManager = CLLocationManager()
+    //store user's current location
+    var location: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +80,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //new location = stsored location var, update
         let newLocation = locations.last!
         print("didUpdateLocaitons \(newLocation)")
+        //update user location
+        location = newLocation
+        print("test \(location?.coordinate.latitude)")
     }
     
     // MARK: - Helper Methods
