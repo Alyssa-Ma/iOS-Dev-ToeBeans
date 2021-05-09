@@ -46,6 +46,7 @@ class LocationManager: NSObject {
                 }
                 
                 print("place string test \(place)")
+                print("coord test \(place.location?.coordinate)")
                 
                 let result = Location(title: name, coordinates: place.location?.coordinate)
                 return result
