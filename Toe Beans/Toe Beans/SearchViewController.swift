@@ -38,8 +38,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     //search location
     var locations = [Location]()
     //strings to hold what to input for api
-    var locationLat: String?
-    var locationLong: String?
+    var locationLat: String = ""
+    var locationLong: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +118,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
             print("got a location")
             stopLocationManager()
+            locationLat = String(format: "%.8f", location!.coordinate.latitude)
+            locationLong = String(format: "%.8f", location!.coordinate.longitude)
+            print("own location str test \(locationLat) \(locationLong)")
         }
     }
     
@@ -152,18 +155,23 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //show alert
         present(alert, animated: true, completion: nil)
     }
-    /**
+    
+    //create url based on clicked current loc button or search text
     func createURL() {
         if ownLocation == true {
-            locationLat = String(format: "%.8f", location?.coordinate.latitude as! CVarArg)
-            locationLong = String(format: "%.8f", location?.coordinate.longitude as! CVarArg)
-        }
+            locationLat = String(format: "%.8f", location!.coordinate.latitude)
+            locationLong = String(format: "%.8f", location!.coordinate.longitude)
+            print("own location \(locationLat) \(locationLong)")
+        }/**
         else {
-            locationLat =
+            locationLat = String(format: "%.8f", locations[].coordinates?.latitude as! CVarArg)
+            locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
         }
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + locationLat! + "," + locationLong! + "&language=en&radius=150&type=cafe")
+         */
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + locationLat + "," + locationLong + "&language=en&radius=150&type=cafe")
+        print("url test \(url)")
     }
-    
+    /**
     // MARK: - Cafe API Handling
     func APIHandling(){
         //if user wants to use current location, handle api with current location instead
@@ -232,7 +240,7 @@ extension SearchViewController: UISearchBarDelegate {
             LocationManager.shared.findLocations(with: searchBar.text!) {[weak self] locations in DispatchQueue.main.async {
                 self?.locations = locations
             }}
-            
+            createURL()
             //reloads table view to make new rows visible
             tableView.reloadData()
         }
