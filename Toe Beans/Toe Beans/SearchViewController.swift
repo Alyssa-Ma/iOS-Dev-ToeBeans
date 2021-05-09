@@ -240,19 +240,17 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             //geocode search results
             LocationManager.shared.findLocations(with: searchBar.text!) {[weak self] locations in DispatchQueue.main.async {
-                //check if locations is nil, parse
-                if self?.locations == nil {
+                //check if there is a location
+                if locations.count != 0 {
                     //set to locations
                     self?.locations = locations
                     //print(locations.count)
                     //set the lat and long
-
                     self!.locationLat = String(format: "%.8f", locations[0].coordinates?.latitude as! CVarArg)
                     self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
                     print("test search lat \(self!.locationLat)")
                     print("test search long \(self!.locationLong)")
                 }
-                //else, location wasn't found
                 else {
                     print("couldn't find location")
                 }

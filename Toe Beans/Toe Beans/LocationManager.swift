@@ -52,4 +52,5 @@ class LocationManager: NSObject {
             completion(models)
         }
     }
+    
 }
