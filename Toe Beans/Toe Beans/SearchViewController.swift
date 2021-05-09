@@ -35,9 +35,12 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var lastLocationError: Error?
     //bool if user wants to use own location
     var ownLocation = false
+    //search location
+    var locations = [Location]()
     //strings to hold what to input for api
     var locationLat: String?
     var locationLong: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -208,6 +211,9 @@ extension SearchViewController: UISearchBarDelegate {
             hasSearched = true
             //array to hold search results
             searchResults = []
+            LocationManager.shared.findLocations(with: searchBar.text!) {[weak self] locations in DispatchQueue.main.async {
+                self?.locations = locations
+            }}
             
             //reloads table view to make new rows visible
             tableView.reloadData()
