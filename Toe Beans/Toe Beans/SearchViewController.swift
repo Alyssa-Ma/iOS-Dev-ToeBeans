@@ -33,7 +33,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var updatingLocation = false
     //if error in location
     var lastLocationError: Error?
-    
+    //bool if user wants to use own location
+    var ownLocation = false
+    //strings to hold what to input for api
+    var locationLat: String?
+    var locationLong: String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +58,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     
     //get location
     @IBAction func getLocation() {
+        //user wants to use own location
+        ownLocation = true
         //ask for location permission
         let authStatus = locationManager.authorizationStatus
         //if auth status is not yet known, prompt
@@ -112,8 +118,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-
-    
     // MARK: - Helper Methods
     //alert if user denied location services
     func showLocationServicesDeniedAlert() {
@@ -127,29 +131,28 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //show alert
         present(alert, animated: true, completion: nil)
     }
-}
-
-// MARK: - Search Bar Delegate
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if !searchBar.text!.isEmpty {
-            //dismisses keyboard after pressing search
-            searchBar.resignFirstResponder()
-            //user has done a search
-            hasSearched = true
-            //array to hold search results
-            searchResults = []
+    /**
+    func createURL() {
+        if ownLocation == true {
+            locationLat = String(format: "%.8f", location?.coordinate.latitude as! CVarArg)
+            locationLong = String(format: "%.8f", location?.coordinate.longitude as! CVarArg)
+        }
+        else {
+            locationLat =
+        }
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + locationLat! + "," + locationLong! + "&language=en&radius=150&type=cafe")
+    }
+    
+    // MARK: - Cafe API Handling
+    func APIHandling(){
+        //if user wants to use current location, handle api with current location instead
+        if ownLocation == true {
             
-            
-            //reloads table view to make new rows visible
-            tableView.reloadData()
         }
         
-        /**
-        // MARK: - Cafe API Handling
-        print("test geo lat" + geoLocation[0].lat)
+        
         //Cafe URL with latitude and longitude from previous api
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + geoLocation[0].lat + "," + geoLocation[0].lon + "&language=en&radius=150&type=cafe")
+
         print(url)
         //protect from getting nil url
         guard url != nil else {
@@ -188,7 +191,27 @@ extension SearchViewController: UISearchBarDelegate {
             }
         }
         dataTask.resume()
-         */
+    }
+     */
+}
+
+// MARK: - Search Bar Delegate
+extension SearchViewController: UISearchBarDelegate {
+    //if search button clicked
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //user wants to use search bar
+        ownLocation = false
+        if !searchBar.text!.isEmpty {
+            //dismisses keyboard after pressing search
+            searchBar.resignFirstResponder()
+            //user has done a search
+            hasSearched = true
+            //array to hold search results
+            searchResults = []
+            
+            //reloads table view to make new rows visible
+            tableView.reloadData()
+        }
     }
     //fixes white line right above search bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
