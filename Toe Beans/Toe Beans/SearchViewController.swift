@@ -157,32 +157,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-
-    /**
     // MARK: - Cafe API Handling
     func APIHandling(){
-        //if user wants to use current location, handle api with current location instead
-        if ownLocation == true {
-            
-        }
-     //create url based on clicked current loc button or search text
-     func createURL() {
-         if ownLocation == true {
-             locationLat = String(format: "%.8f", location!.coordinate.latitude)
-             locationLong = String(format: "%.8f", location!.coordinate.longitude)
-             print("own location \(locationLat) \(locationLong)")
-         }/**
-         else {
-             locationLat = String(format: "%.8f", locations[].coordinates?.latitude as! CVarArg)
-             locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
-         }
-          */
-         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=" + locationLat + "," + locationLong + "&language=en&radius=150&type=cafe")
-         print("url test \(url)")
-     }
-        
-        //Cafe URL with latitude and longitude from previous api
-
+        //set url based on the given coords
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat), \(locationLong)&language=en&radius=150&type=cafe")
+        print("url test \(url)")
         print(url)
         //protect from getting nil url
         guard url != nil else {
@@ -190,6 +169,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
         
+        /**
         //URL Request
         var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         
@@ -221,8 +201,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         dataTask.resume()
+         */
     }
-     */
 }
 
 // MARK: - Search Bar Delegate
@@ -255,7 +235,8 @@ extension SearchViewController: UISearchBarDelegate {
                     print("couldn't find location")
                 }
             }}
-            
+            print(location.Lat)
+            APIHandling()
             //reloads table view to make new rows visible
             tableView.reloadData()
         }
