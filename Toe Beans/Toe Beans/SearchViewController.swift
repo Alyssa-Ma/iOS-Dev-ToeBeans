@@ -55,6 +55,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             return
         }
+        //alert if user denied location services
+        if authStatus == .denied || authStatus == .restricted {
+            showLocationServicesDeniedAlert()
+            return
+        }
         //view controller is its delegate
         locationManager.delegate = self
         //receive locations with accuracy of 10m
@@ -73,6 +78,20 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //new location = stsored location var, update
         let newLocation = locations.last!
         print("didUpdateLocaitons \(newLocation)")
+    }
+    
+    // MARK: - Helper Methods
+    //alert if user denied location services
+    func showLocationServicesDeniedAlert() {
+        //alert popup
+        let alert = UIAlertController(title: "Location Services Disabled", message: "To use this app, please enable location services.", preferredStyle: .alert)
+        
+        //press ok
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        //show alert
+        present(alert, animated: true, completion: nil)
     }
 }
 
