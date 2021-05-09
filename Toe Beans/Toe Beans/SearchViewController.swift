@@ -95,12 +95,30 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //new location = stsored location var, update
         let newLocation = locations.last!
-        print("didUpdateLocaitons \(newLocation)")
-        //update user location
-        location = newLocation
-        print("test \(location?.coordinate.latitude)")
-        //found a location, change from error to none
-        lastLocationError = nil
+        print("didUpdateLocations \(newLocation)")
+        
+        //ignore old cached results
+        if newLocation.timestamp.timeIntervalSinceNow < -5 {
+            return
+        }
+        
+        //if the new location is less accurate, ignore
+        if newLocation.horizontalAccuracy < 0 {
+            return
+        }
+        
+        //if the new location is more accurate than the old one
+        if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
+            //clear error and store the new location
+            lastLocationError = nil
+            location = newLocation
+        }
+        
+        //stop updating
+        if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
+            print("got a location")
+            stopLocationManager()
+        }
     }
     
     //start location manager
