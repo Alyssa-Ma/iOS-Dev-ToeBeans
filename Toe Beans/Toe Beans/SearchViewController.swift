@@ -36,7 +36,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     //bool if user wants to use own location
     var ownLocation = false
     //search location
-    var locations: [Location]!
+    var locations: [Location]?
     //strings to hold what to input for api
     var locationLat: String = ""
     var locationLong: String = ""
@@ -240,16 +240,21 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             //geocode search results
             LocationManager.shared.findLocations(with: searchBar.text!) {[weak self] locations in DispatchQueue.main.async {
-                //set to locations
-                self?.locations = locations
-                //print(locations.count)
-                if locations != nil
-                {
+                //check if locations is nil, parse
+                if self?.locations == nil {
+                    //set to locations
+                    self?.locations = locations
+                    //print(locations.count)
                     //set the lat and long
-                    self!.locationLat = String(format: "%.8f", locations[0].coordinates!.latitude)
-                    self!.locationLong = String(format: "%.8f", locations[0].coordinates!.longitude)
+
+                    self!.locationLat = String(format: "%.8f", locations[0].coordinates?.latitude as! CVarArg)
+                    self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
                     print("test search lat \(self!.locationLat)")
                     print("test search long \(self!.locationLong)")
+                }
+                //else, location wasn't found
+                else {
+                    print("couldn't find location")
                 }
             }}
             
