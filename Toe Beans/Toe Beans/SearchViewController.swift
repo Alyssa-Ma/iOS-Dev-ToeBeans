@@ -25,8 +25,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var searchResults = [SearchResult]()
     //bool if user has done a search
     var hasSearched = false
-    //geo loc array
-    var geoLocation: [Location] = []
+    //reference to object that gets GPS coords
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,35 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         
         //keyboard on launch
         searchBar.becomeFirstResponder()
+    }
+    
+    //get location
+    @IBAction func getLocation() {
+        //ask for location permission
+        let authStatus = locationManager.authorizationStatus
+        //if auth status is not yet known, prompt
+        if authStatus == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+            return
+        }
+        //view controller is its delegate
+        locationManager.delegate = self
+        //receive locations with accuracy of 10m
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        //update locations
+        locationManager.startUpdatingLocation()
+    }
+    
+    // MARK: - CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        //if error, print with desc of why
+        print("didFailWithError \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //new location = stsored location var, update
+        let newLocation = locations.last!
+        print("didUpdateLocaitons \(newLocation)")
     }
 }
 

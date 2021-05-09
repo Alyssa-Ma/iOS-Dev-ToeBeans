@@ -231,7 +231,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="getLocation" destination="l77-BN-N0s" eventType="touchUpInside" id="DTk-Sb-kSe"/>
+                                    <action selector="getLocation" destination="l77-BN-N0s" eventType="touchUpInside" id="3PG-fQ-zwi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -250,7 +250,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Tag" id="Mco-PH-rqh"/>
                     <connections>
-                        <outlet property="getLocationButton" destination="jfb-Kt-AYP" id="I7R-9l-jqX"/>
+                        <outlet property="getLocationButton" destination="jfb-Kt-AYP" id="sqL-UO-61u"/>
                         <outlet property="searchBar" destination="kp5-cu-EiR" id="CBc-Er-PSA"/>
                         <outlet property="tableView" destination="Pqu-Ye-Rcb" id="bYe-A1-yfI"/>
                     </connections>
@@ -265,6 +265,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="OAV-Wj-Hem" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fya-ST-1vM">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
