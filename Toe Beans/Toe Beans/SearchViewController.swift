@@ -29,6 +29,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     //store user's current location
     var location: CLLocation?
+    //check if we're updating location
+    var updatingLocation = false
+    //if error in location
+    var lastLocationError: Error?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,18 +66,21 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             showLocationServicesDeniedAlert()
             return
         }
-        //view controller is its delegate
-        locationManager.delegate = self
-        //receive locations with accuracy of 10m
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        //update locations
-        locationManager.startUpdatingLocation()
+        //start the location manager
+        startLocationManager()
     }
     
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         //if error, print with desc of why
         print("didFailWithError \(error.localizedDescription)")
+        
+        //unable to get a location currently, try until location found or other err
+        if(error as NSError).code == CLError.locationUnknown.rawValue {
+            return
+        }
+        lastLocationError = error
+        stopLocationManager()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -83,7 +90,29 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //update user location
         location = newLocation
         print("test \(location?.coordinate.latitude)")
+        //found a location, change from error to none
+        lastLocationError = nil
     }
+    
+    //start location manager
+    func startLocationManager() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            updatingLocation = true
+        }
+    }
+    //tell location manager to stop looking for locations
+    func stopLocationManager() {
+        if updatingLocation {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            updatingLocation = false
+        }
+    }
+    
+
     
     // MARK: - Helper Methods
     //alert if user denied location services
