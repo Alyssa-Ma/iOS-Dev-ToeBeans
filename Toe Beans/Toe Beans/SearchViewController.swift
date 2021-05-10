@@ -157,19 +157,58 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - Cafe API Handling
+    public func findLocations(with query: String, completion: @escaping (([Location]) -> Void)) {
+        let geoCoder = CLGeocoder()
+        
+        //handle error
+        geoCoder.geocodeAddressString(query) {places, error in
+            guard let places = places, error == nil else {
+                completion([])
+                return
+            }
+            
+            let models: [Location] = places.compactMap({ place in
+                var name = ""
+                if let locationName = place.name {
+                    name += locationName
+                }
+                
+                if let adminRegion = place.administrativeArea {
+                    name += ", \(adminRegion)"
+                }
+                
+                if let locality = place.locality {
+                    name += ", \(locality)"
+                }
+                if let country = place.country {
+                    name += ", \(country)"
+                }
+                
+                print("place string test \(place)")
+                print("coord test \(place.location!.coordinate)")
+                
+                let result = Location(coordinates: place.location?.coordinate)
+                return result
+            })
+            completion(models)
+        }
+    }
+    
     func APIHandling(){
+        /**
         //set url based on the given coords
         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat), \(locationLong)&language=en&radius=150&type=cafe")
         print("url test \(url)")
         print(url)
+        
         //protect from getting nil url
         guard url != nil else {
             print("Error creating url obj")
-            return
+            
         }
+        return url!
         
-        /**
+        
         //URL Request
         var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         
@@ -219,24 +258,9 @@ extension SearchViewController: UISearchBarDelegate {
             //array to hold search results
             searchResults = []
             //geocode search results
-            LocationManager.shared.findLocations(with: searchBar.text!) {[weak self] locations in DispatchQueue.main.async {
-                //check if there is a location
-                if locations.count != 0 {
-                    //set to locations
-                    self?.locations = locations
-                    //print(locations.count)
-                    //set the lat and long
-                    self!.locationLat = String(format: "%.8f", locations[0].coordinates?.latitude as! CVarArg)
-                    self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
-                    print("test search lat \(self!.locationLat)")
-                    print("test search long \(self!.locationLong)")
-                }
-                else {
-                    print("couldn't find location")
-                }
-            }}
-            print(location.Lat)
-            APIHandling()
+            location
+
+            //APIHandling()
             //reloads table view to make new rows visible
             tableView.reloadData()
         }
