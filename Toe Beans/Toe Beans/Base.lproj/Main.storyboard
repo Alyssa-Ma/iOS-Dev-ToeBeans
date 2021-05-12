@@ -215,8 +215,26 @@
                                     <outlet property="delegate" destination="l77-BN-N0s" id="pDx-Dl-hr4"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kp5-cu-EiR">
-                                <rect key="frame" x="0.0" y="44" width="390" height="56"/>
+                            <view contentMode="scaleToFill" id="HQc-AD-SOK">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57672733070000004" green="0.83004999160000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="IHT-yb-6Sk">
+                                <rect key="frame" x="0.0" y="44" width="77" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57672733070000004" green="0.83004999160000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="ALL-Jk-qDM"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kp5-cu-EiR">
+                                <rect key="frame" x="77" y="44" width="270" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" name="SearchBar"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -238,14 +256,10 @@
                         <viewLayoutGuide key="safeArea" id="NnD-dj-muo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kp5-cu-EiR" firstAttribute="top" secondItem="NnD-dj-muo" secondAttribute="top" id="6IB-eK-OFg"/>
-                            <constraint firstItem="kp5-cu-EiR" firstAttribute="trailing" secondItem="NnD-dj-muo" secondAttribute="trailing" id="BxD-SK-wVa"/>
                             <constraint firstItem="Pqu-Ye-Rcb" firstAttribute="leading" secondItem="NnD-dj-muo" secondAttribute="leading" id="D34-yV-7ia"/>
                             <constraint firstItem="Pqu-Ye-Rcb" firstAttribute="trailing" secondItem="NnD-dj-muo" secondAttribute="trailing" id="Ewm-J1-sYv"/>
                             <constraint firstItem="Pqu-Ye-Rcb" firstAttribute="bottom" secondItem="NnD-dj-muo" secondAttribute="bottom" id="aGq-vs-MQI"/>
-                            <constraint firstItem="kp5-cu-EiR" firstAttribute="top" secondItem="NnD-dj-muo" secondAttribute="top" id="akq-ge-dfQ"/>
                             <constraint firstItem="Pqu-Ye-Rcb" firstAttribute="top" secondItem="NnD-dj-muo" secondAttribute="top" id="hrQ-mo-nEM"/>
-                            <constraint firstItem="kp5-cu-EiR" firstAttribute="leading" secondItem="NnD-dj-muo" secondAttribute="leading" id="kq1-f0-2Nt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -256,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKJ-Og-hUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2732" y="88"/>
+            <point key="canvasLocation" x="2729.2307692307691" y="87.440758293838854"/>
         </scene>
     </scenes>
     <resources>
