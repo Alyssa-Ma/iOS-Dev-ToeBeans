@@ -167,6 +167,20 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    //parse json data
+    func parse(data: Data) -> [SearchResult] {
+        do {
+            //use json decoder to convert to a temp result array
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(ResultArray.self, from: data)
+            return result.results
+        }
+        catch {
+            print("JSON Error: \(error)")
+            return []
+        }
+    }
+    
     // MARK: - Cafe API Handling
     func APIHandling(){
         print("url lat test \(locationLat)")
@@ -197,6 +211,17 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         
         //Data task
         let dataTask = session.dataTask(with: request) { (data, response, error) in
+            
+            /**
+            guard let data = data else {return}
+            do {
+                let data = try JSONDecoder().decode([SearchResult].self, from: data)
+                print("search data")
+                print(data)
+            }
+            catch let jsonErr {
+                print("error parsing json")
+            
             //if no errors and there is some data
             print("test??")
             if error == nil && data != nil {
@@ -204,11 +229,14 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                     //parse data
                     let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
                     print(dictionary)
+                    
                 }
                 catch {
                     print("Error parsing response data")
                 }
+
             }
+             */
         }
         dataTask.resume()
     }

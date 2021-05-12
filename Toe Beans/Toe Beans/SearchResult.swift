@@ -7,9 +7,19 @@
 
 import Foundation
 
-//hold api result of places found
-struct SearchResult: Decodable {
-    let name: String
-    let address: String
-    let location: String
+//hold array of results
+class ResultArray: Codable {
+    var results = [SearchResult]()
+}
+
+//hold values from arr of results
+class SearchResult: Codable {
+    var address: String? = ""
+    var location = [Coords]()
+    var name: String? = ""
+}
+
+class Coords: Codable {
+    var lat: String? = ""
+    var lng: String? = ""
 }
