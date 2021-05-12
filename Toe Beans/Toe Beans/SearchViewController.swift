@@ -83,6 +83,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         hasSearched = true
         //array to hold search results
         searchResults = []
+        print("url lat test \(locationLat)")
         //handle api
         APIHandling()
     }
@@ -167,8 +168,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Cafe API Handling
     func APIHandling(){
+        print("url lat test \(locationLat)")
         //set url based on the given coords
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat), \(locationLong)&language=en&radius=150&type=cafe")
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat)%2C\(locationLong)&language=en&radius=150&type=cafe")
         print("url test \(url)")
         print(url)
         //protect from getting nil url
@@ -235,6 +237,12 @@ extension SearchViewController: UISearchBarDelegate {
                     self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
                     print("test search lat \(self!.locationLat)")
                     print("test search long \(self!.locationLong)")
+                    
+                    self?.APIHandling()
+                    DispatchQueue.main.async {
+                        //reloads table view to make new rows visible
+                        self!.tableView.reloadData()
+                    }
                 }
                 else {
                     print("couldn't find location")
@@ -242,9 +250,7 @@ extension SearchViewController: UISearchBarDelegate {
             }}
             
             print(locationLat)
-            APIHandling()
-            //reloads table view to make new rows visible
-            tableView.reloadData()
+            
         }
     }
     //fixes white line right above search bar
