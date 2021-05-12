@@ -84,8 +84,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //array to hold search results
         searchResults = []
         print("url lat test \(locationLat)")
-        //handle api
-        APIHandling()
+        
     }
     
     // MARK: - CLLocationManagerDelegate
@@ -126,11 +125,13 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //stop updating
         if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
             print("got a location")
-            stopLocationManager()
             //set the new coords
             locationLat = String(format: "%.8f", location!.coordinate.latitude)
             locationLong = String(format: "%.8f", location!.coordinate.longitude)
             print("own location str test \(locationLat) \(locationLong)")
+            stopLocationManager()
+            //handle api
+            APIHandling()
         }
     }
     
