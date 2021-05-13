@@ -208,9 +208,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
                 //set result count
                 self.resCount = self.searchRes?.results.count
-                //refresh table after api call
+                //refresh table
                 DispatchQueue.main.async {
-                    //reloads table view to make new rows visible
+                    print("refresh table")
                     self.tableView.reloadData()
                 }
                 //print("res count test \(self.resCount)")
@@ -268,6 +268,7 @@ extension SearchViewController: UISearchBarDelegate {
                     self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
                     //do api handling
                     self?.APIHandling()
+                    
                 }
                 else {
                     print("couldn't find location")
@@ -316,7 +317,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             else {
                 cell.locationLabel.text = searchRes?.results[indexPath.row].address
             }
+            print("returned cell")
             return cell
+            
         }
     }
     
