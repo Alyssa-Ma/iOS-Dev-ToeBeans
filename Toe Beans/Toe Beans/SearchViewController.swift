@@ -42,6 +42,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     //strings to hold what to input for api
     var locationLat: String = ""
     var locationLong: String = ""
+    //int to hold the number of results
+    var resCount: Int? = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,7 +171,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - Cafe API Handling
+    // MARK: - API Handling
     func APIHandling() {
         print("url lat test \(locationLat)")
         //set url based on the given coords
@@ -204,8 +206,16 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             
             
             do {
+                //decode results
                 self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
-
+                //set result count
+                self.resCount = self.searchRes?.results.count
+                //refresh table after api call
+                DispatchQueue.main.async {
+                    //reloads table view to make new rows visible
+                    self.tableView.reloadData()
+                }
+                //print("res count test \(self.resCount)")
                 if let searchRes = self.searchRes {
                     print("test searchres \(searchRes)")
                 }
@@ -216,7 +226,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             catch {
                 print("error json parse: \(error)")
             }
-           
+           /**
             if error == nil && data != nil {
                 do {
                     
@@ -229,9 +239,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 catch {
                     print("Error parsing response data")
                 }
-             
-
             }
+             */
         }
         
         dataTask.resume()
@@ -242,8 +251,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
 extension SearchViewController: UISearchBarDelegate {
     //if search button clicked
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //user wants to use search bar
-        ownLocation = false
+        //if search bar is not empty
         if !searchBar.text!.isEmpty {
             //dismisses keyboard after pressing search
             searchBar.resignFirstResponder()
@@ -260,23 +268,16 @@ extension SearchViewController: UISearchBarDelegate {
                     //set the lat and long
                     self!.locationLat = String(format: "%.8f", locations[0].coordinates?.latitude as! CVarArg)
                     self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
-                    print("test search lat \(self!.locationLat)")
-                    print("test search long \(self!.locationLong)")
-                    
+                    //do api handling
                     self?.APIHandling()
 
-                    DispatchQueue.main.async {
-                        //reloads table view to make new rows visible
-                        self!.tableView.reloadData()
-                    }
+                    
                 }
                 else {
                     print("couldn't find location")
                 }
             }}
-            
-            print(locationLat)
-            
+
         }
     }
     //fixes white line right above search bar
@@ -289,14 +290,14 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !hasSearched{
-            print("search res num 0 \(searchRes?.results.count)")
+            print("search res num 0 \(resCount)")
             return 0
-        } else if searchRes?.results.count == 0 || searchRes?.results.count == nil {
-            print("search res num 1 \(searchRes?.results.count)")
+        } else if resCount == 0 {
+            print("search res num 1 \(resCount)")
             return 1
         } else {
-            print("search res num \(searchRes?.results.count)")
-            return searchRes!.results.count
+            print("search res num \(resCount)")
+            return resCount!
         }
     }
     
@@ -305,7 +306,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchResultCell
         //handle no results or search failed
-        if searchRes?.results.count == 0 {
+        if resCount == 0 {
             return tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.nothingFoundCell, for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
@@ -322,7 +323,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if searchRes?.results.count == 0 {
+        if resCount == 0 {
             return nil
         } else {
             return indexPath

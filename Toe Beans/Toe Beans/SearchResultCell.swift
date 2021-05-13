@@ -23,7 +23,6 @@ class SearchResultCell: UITableViewCell {
     }
 
     // MARK:- Outlet Properties
-    @IBOutlet var businessImageView: UIImageView!
     @IBOutlet var companyNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     
