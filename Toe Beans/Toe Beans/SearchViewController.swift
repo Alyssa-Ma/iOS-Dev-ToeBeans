@@ -21,6 +21,20 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var getLocationButton: UIButton!
     
+    struct ResultArray: Decodable {
+        var results: [SearchResult]
+    }
+    //hold values from arr of results
+    struct SearchResult: Decodable {
+        var address: String
+        var location: Coords
+        var name: String
+    }
+
+    struct Coords: Codable {
+        var lat: Double
+        var lng: Double
+    }
     //search result array
     var searchResults = [SearchResult]()
     //bool if user has done a search
@@ -82,7 +96,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //user has done a search
         hasSearched = true
         //array to hold search results
-        searchResults = []
+        //searchResults?.resul
         print("url lat test \(locationLat)")
         
     }
@@ -126,8 +140,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
             print("got a location")
             //set the new coords
-            locationLat = String(format: "%.8f", location!.coordinate.latitude)
-            locationLong = String(format: "%.8f", location!.coordinate.longitude)
+            locationLat = String(format: "%.8f", newLocation.coordinate.latitude)
+            locationLong = String(format: "%.8f", newLocation.coordinate.longitude)
             print("own location str test \(locationLat) \(locationLong)")
             stopLocationManager()
             //handle api
@@ -167,22 +181,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    //parse json data
-    func parse(data: Data) -> [SearchResult] {
-        do {
-            //use json decoder to convert to a temp result array
-            let decoder = JSONDecoder()
-            let result = try decoder.decode(ResultArray.self, from: data)
-            return result.results
-        }
-        catch {
-            print("JSON Error: \(error)")
-            return []
-        }
-    }
-    
     // MARK: - Cafe API Handling
-    func APIHandling(){
+    func APIHandling() {
         print("url lat test \(locationLat)")
         //set url based on the given coords
         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat)%2C\(locationLong)&language=en&radius=150&type=cafe")
@@ -211,33 +211,41 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         
         //Data task
         let dataTask = session.dataTask(with: request) { (data, response, error) in
-            
-            /**
+            //protect from nil
             guard let data = data else {return}
-            do {
-                let data = try JSONDecoder().decode([SearchResult].self, from: data)
-                print("search data")
-                print(data)
-            }
-            catch let jsonErr {
-                print("error parsing json")
+            var searchRes: ResultArray?
             
-            //if no errors and there is some data
-            print("test??")
+            do {
+                searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
+                
+                if let searchRes = searchRes {
+                    print("test searchres \(searchRes)")
+                }
+                else {
+                    print("failed to parse")
+                }
+            }
+            catch {
+                print("error json parse: \(error)")
+            }
+            /**
             if error == nil && data != nil {
                 do {
-                    //parse data
-                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any]
-                    print(dictionary)
                     
+                    //parse data
+                    let dictionary = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any]
+                    print("dictionary print \(dictionary)")
+                    
+
                 }
                 catch {
                     print("Error parsing response data")
                 }
+             
 
-            }
-             */
+            }*/
         }
+        
         dataTask.resume()
     }
 }
@@ -268,6 +276,7 @@ extension SearchViewController: UISearchBarDelegate {
                     print("test search long \(self!.locationLong)")
                     
                     self?.APIHandling()
+
                     DispatchQueue.main.async {
                         //reloads table view to make new rows visible
                         self!.tableView.reloadData()

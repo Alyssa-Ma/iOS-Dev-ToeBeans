@@ -7,19 +7,17 @@
 
 import Foundation
 
-//hold array of results
-class ResultArray: Codable {
-    var results = [SearchResult]()
+struct ResultArray: Codable {
+    let results = [SearchResult]()
 }
-
 //hold values from arr of results
-class SearchResult: Codable {
-    var address: String? = ""
-    var location = [Coords]()
-    var name: String? = ""
+struct SearchResult: Codable {
+    let address: String?
+    let location = [Coords]()
+    let name: String?
 }
 
 class Coords: Codable {
-    var lat: String? = ""
-    var lng: String? = ""
+    var lat: String?
+    var lng: String? 
 }
