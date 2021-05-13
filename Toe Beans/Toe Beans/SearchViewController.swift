@@ -289,8 +289,10 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !hasSearched{
+            print("search res num 0 \(searchRes?.results.count)")
             return 0
         } else if searchRes?.results.count == 0 || searchRes?.results.count == nil {
+            print("search res num 1 \(searchRes?.results.count)")
             return 1
         } else {
             print("search res num \(searchRes?.results.count)")
