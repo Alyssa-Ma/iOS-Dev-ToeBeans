@@ -65,8 +65,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     
     //get location
     @IBAction func getLocation() {
-        //user wants to use own location
-        ownLocation = true
         //ask for location permission
         let authStatus = locationManager.authorizationStatus
         //if auth status is not yet known, prompt
@@ -270,8 +268,6 @@ extension SearchViewController: UISearchBarDelegate {
                     self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
                     //do api handling
                     self?.APIHandling()
-
-                    
                 }
                 else {
                     print("couldn't find location")
@@ -302,19 +298,26 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = TableView.CellIdentifiers.searchResultCell
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchResultCell
         //handle no results or search failed
         if resCount == 0 {
             return tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.nothingFoundCell, for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
             let searchResult = searchRes?.results[indexPath.row]
-            //cell.companyNameLabel.text = searchResult.results.name
-            //cell.locationLabel.text = searchResult.locationName
+            //set company name 
+            cell.companyNameLabel.text = searchRes?.results[indexPath.row].name
+            print("company name \(searchRes?.results[indexPath.row].name)")
+            //if location isn't listed, print the coords instead
+            if ((searchRes?.results[indexPath.row].location) == nil) {
+                let latString: String = String(format: "%f", searchRes?.results[indexPath.row].location.lat as! CVarArg)
+                let longString: String = String(format: "%f", searchRes?.results[indexPath.row].location.lng as! CVarArg)
+                cell.locationLabel.text = latString + ", " + longString
+            }
+            else {
+                cell.locationLabel.text = searchRes?.results[indexPath.row].address
+            }
+            return cell
         }
-        return cell
     }
     
     //funcs for selection handling
