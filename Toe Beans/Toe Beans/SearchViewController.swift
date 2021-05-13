@@ -21,22 +21,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var getLocationButton: UIButton!
     
-    struct ResultArray: Decodable {
-        var results: [SearchResult]
-    }
-    //hold values from arr of results
-    struct SearchResult: Decodable {
-        var address: String
-        var location: Coords
-        var name: String
-    }
-
-    struct Coords: Codable {
-        var lat: Double
-        var lng: Double
-    }
     //search result array
-    var searchResults = [SearchResult]()
+    //var searchResults = [ResultArray]()
+    //search result parsed json
+    var searchRes: ResultArray?
     //bool if user has done a search
     var hasSearched = false
     //reference to object that gets GPS coords
@@ -213,12 +201,12 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             //protect from nil
             guard let data = data else {return}
-            var searchRes: ResultArray?
+            
             
             do {
-                searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
-                
-                if let searchRes = searchRes {
+                self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
+
+                if let searchRes = self.searchRes {
                     print("test searchres \(searchRes)")
                 }
                 else {
@@ -228,7 +216,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             catch {
                 print("error json parse: \(error)")
             }
-            /**
+           
             if error == nil && data != nil {
                 do {
                     
@@ -243,7 +231,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 }
              
 
-            }*/
+            }
         }
         
         dataTask.resume()
