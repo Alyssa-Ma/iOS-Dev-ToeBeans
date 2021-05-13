@@ -22,7 +22,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var getLocationButton: UIButton!
     
     //search result array
-    //var searchResults = [ResultArray]()
+    //var searchResults = ResultArray.init(results: searchRes?)
     //search result parsed json
     var searchRes: ResultArray?
     //bool if user has done a search
@@ -250,7 +250,7 @@ extension SearchViewController: UISearchBarDelegate {
             //user has done a search
             hasSearched = true
             //array to hold search results
-            searchResults = []
+            //searchResults = []
             LocationManager.shared.findLocations(with: searchBar.text!) {[weak self] locations in DispatchQueue.main.async {
                 //check if there is a location
                 if locations.count != 0 {
@@ -290,10 +290,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !hasSearched{
             return 0
-        } else if searchResults.count == 0 {
+        } else if searchRes?.results.count == 0 || searchRes?.results.count == nil {
             return 1
         } else {
-            return searchResults.count
+            print("search res num \(searchRes?.results.count)")
+            return searchRes!.results.count
         }
     }
     
@@ -302,11 +303,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchResultCell
         //handle no results or search failed
-        if searchResults.count == 0 {
+        if searchRes?.results.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.nothingFoundCell, for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
-            let searchResult = searchResults[indexPath.row]
+            let searchResult = searchRes?.results[indexPath.row]
             //cell.companyNameLabel.text = searchResult.results.name
             //cell.locationLabel.text = searchResult.locationName
         }
@@ -319,7 +320,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if searchResults.count == 0 {
+        if searchRes?.results.count == 0 {
             return nil
         } else {
             return indexPath
