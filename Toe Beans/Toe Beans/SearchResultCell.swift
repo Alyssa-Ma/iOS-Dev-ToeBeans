@@ -7,8 +7,13 @@
 
 import UIKit
 
-class SearchResultCell: UITableViewCell {
+protocol SearchResultCellDelegate: AnyObject {
+    func preAddFavorite()
+}
 
+class SearchResultCell: UITableViewCell {
+    public weak var delegate: SearchResultCellDelegate?
+    static let identifier = "SearchResultCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,10 +32,9 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet var companyNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var favoriteButton: UIButton!
-    weak var delegate:FavoriteDelegate?
     
     @IBAction func addFav() {
         print("button press test")
-        delegate?.addFavorite(name: companyNameLabel.text!)
+        delegate?.preAddFavorite()
     }
 }

@@ -323,7 +323,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 //print("search res address \(searchResult?.address)")
             }
             //print("returned cell")
-            
+            cell.delegate = self
             return cell
             
         }
@@ -345,5 +345,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     //need to do set heigh manually or cell doesn't display
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
+    }
+}
+
+extension SearchViewController: SearchResultCellDelegate {
+    func preAddFavorite() {
+        print("received tap from button")
     }
 }
