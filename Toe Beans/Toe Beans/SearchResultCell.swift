@@ -9,6 +9,7 @@ import UIKit
 
 class SearchResultCell: UITableViewCell {
 
+
     override func awakeFromNib() {
         super.awakeFromNib()
         let selectedView = UIView(frame: CGRect.zero)
@@ -26,8 +27,10 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet var companyNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var favoriteButton: UIButton!
+    weak var delegate:FavoriteDelegate?
     
-    @IBAction func addFavorite() {
-        
+    @IBAction func addFav() {
+        print("button press test")
+        delegate?.addFavorite(name: companyNameLabel.text!)
     }
 }

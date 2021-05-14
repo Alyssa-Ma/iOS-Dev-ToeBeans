@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var getLocationButton: UIButton!
+    @IBOutlet var test: UIButton!
     
     //search result parsed json
     var searchRes: ResultArray?
@@ -242,6 +243,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         }
         dataTask.resume()
     }
+    
+    func addFavorite() {
+        print("test")
+    }
+    
 }
 
 // MARK: - Search Bar Delegate

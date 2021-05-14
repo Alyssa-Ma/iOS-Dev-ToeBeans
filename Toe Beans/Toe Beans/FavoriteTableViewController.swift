@@ -7,9 +7,19 @@
 
 import UIKit
 
-class FavoriteTableViewController: UITableViewController {
+protocol FavoriteDelegate : AnyObject {
+    func addFavorite(name: String)
+}
+class FavoriteTableViewController: UITableViewController, FavoriteDelegate {
+    func addFavorite(name: String) {
+        print("test favetable")
+        print("test \(name)")
+    }
+    
 
     var items = [FavoriteItem]()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +42,7 @@ class FavoriteTableViewController: UITableViewController {
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
     }
-
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

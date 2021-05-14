@@ -31,7 +31,7 @@
                         <rect key="frame" x="159" y="98" width="72" height="72"/>
                         <state key="normal" backgroundImage="HeartButtonPink"/>
                         <connections>
-                            <action selector="addFavorite" destination="8hS-WH-ebQ" eventType="touchUpInside" id="gNI-Vf-f6E"/>
+                            <action selector="addFav" destination="8hS-WH-ebQ" eventType="touchUpInside" id="bMC-x1-5OG"/>
                         </connections>
                     </button>
                 </subviews>
