@@ -52,7 +52,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="HeartButton"/>
                                 <connections>
-                                    <segue destination="ibv-IC-mAf" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="HJT-gy-cZy"/>
+                                    <segue destination="EW3-CK-l6c" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="HJT-gy-cZy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoB-Wc-W1t">
@@ -102,31 +102,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="LL8-Vi-X5W">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" red="0.75877553220000005" green="0.70821577309999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <items>
-                                <navigationItem title="Favorites" id="BBK-vQ-2u4">
-                                    <barButtonItem key="leftBarButtonItem" style="plain" id="oYj-Pr-Hee">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Pwk-y9-wPs">
-                                            <rect key="frame" x="16" y="2" width="86" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                            <state key="normal" title="Back">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
-                                        <connections>
-                                            <action selector="close" destination="ibv-IC-mAf" id="Hid-V9-edL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteItem" id="Smf-v5-7AG">
-                                <rect key="frame" x="0.0" y="72" width="390" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Smf-v5-7AG" id="xEx-Kt-Hqw">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
@@ -153,10 +131,17 @@
                             <outlet property="delegate" destination="ibv-IC-mAf" id="LAp-uR-3Jt"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Favorites" id="Bw2-Gb-lDW">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="done" id="fFE-uQ-O5S">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="g40-Pg-QQ1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krs-1n-3ar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10.769230769230768" y="763.50710900473928"/>
+            <point key="canvasLocation" x="940" y="763.50710900473928"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="A7B-Bm-8lB">
@@ -236,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INK-38-kDg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="764"/>
+            <point key="canvasLocation" x="1983.0769230769231" y="763.50710900473928"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="OBI-QM-5uB">
@@ -379,9 +364,27 @@
             </objects>
             <point key="canvasLocation" x="2729.2307692307691" y="87.440758293838854"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pP7-EZ-q1I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EW3-CK-l6c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jai-xm-9Na">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ibv-IC-mAf" kind="relationship" relationship="rootViewController" id="5t5-zu-POl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MiV-Vx-6j8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10.769230769230768" y="763.50710900473928"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ALL-Jk-qDM"/>
+        <segue reference="g40-Pg-QQ1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueButton" width="72" height="72"/>

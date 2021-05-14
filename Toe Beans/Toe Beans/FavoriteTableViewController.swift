@@ -26,6 +26,12 @@ class FavoriteTableViewController: UITableViewController {
         item2.text = "test2"
         items.append(item2)
     }
+    
+    // MARK: - Helper methods
+    func configureText(for cell: UITableViewCell, with item: FavoriteItem) {
+        let label = cell.viewWithTag(1000) as! UILabel
+        label.text = item.text
+    }
 
     // MARK: - Table view data source
 
@@ -36,9 +42,7 @@ class FavoriteTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteItem", for: indexPath)
         let item = items[indexPath.row]
-        let label = cell.viewWithTag(1000) as! UILabel
-        
-        label.text = item.text
+        configureText(for: cell, with: item)
         return cell
     }
     

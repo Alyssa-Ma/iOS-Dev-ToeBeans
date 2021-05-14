@@ -27,7 +27,6 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var favoriteButton: UIButton!
     
-    // MARK: - CoreData
     @IBAction func addFavorite() {
         
     }
