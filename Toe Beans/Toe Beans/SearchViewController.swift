@@ -21,8 +21,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var getLocationButton: UIButton!
     
-    //search result array
-    var searchResults = [SearchResult]()
     //search result parsed json
     var searchRes: ResultArray?
     //bool if user has done a search
@@ -85,7 +83,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         hasSearched = true
         //array to hold search results
         //searchResults?.resul
-        print("url lat test \(locationLat)")
+        //print("url lat test \(locationLat)")
         
     }
     
@@ -126,11 +124,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         
         //stop updating
         if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
-            print("got a location")
+            //print("got a location")
             //set the new coords
             locationLat = String(format: "%.8f", newLocation.coordinate.latitude)
             locationLong = String(format: "%.8f", newLocation.coordinate.longitude)
-            print("own location str test \(locationLat) \(locationLong)")
+            //print("own location str test \(locationLat) \(locationLong)")
             stopLocationManager()
             //handle api
             APIHandling()
@@ -171,11 +169,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - API Handling
     func APIHandling() {
-        print("url lat test \(locationLat)")
+        //print("url lat test \(locationLat)")
         //set url based on the given coords
         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat)%2C\(locationLong)&language=en&radius=150&type=cafe")
-        print("url test \(url)")
-        print(url)
+        //print("url test \(url)")
+        //print(url)
         //protect from getting nil url
         guard url != nil else {
             print("Error creating url obj")
@@ -209,25 +207,21 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 //set result count
                 self.resCount = self.searchRes?.results.count
                 //print("res count test \(self.resCount)")
+                /**
                 if let searchRes = self.searchRes {
                     print("test searchres \(searchRes)")
                 }
                 else {
                     print("failed to parse")
                 }
-                print("search results count before \(self.searchResults.count)")
-     
-                
-                //if let resIter = searchRes?.results.
-
-
+                 */
             }
             catch {
                 print("error json parse: \(error)")
             }
             //refresh table
             DispatchQueue.main.async {
-                print("refresh table")
+                //print("refresh table")
                 self.tableView.reloadData()
             }
            /**
@@ -292,13 +286,10 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !hasSearched{
-            print("search res num 0 \(resCount)")
             return 0
         } else if resCount == 0 {
-            print("search res num 1 \(resCount)")
             return 1
         } else {
-            print("search res num \(resCount)")
             return resCount!
         }
     }
@@ -312,20 +303,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             let searchResult = searchRes?.results[indexPath.row]
             //set company name
             cell.companyNameLabel.text = searchResult?.name
-            print("company name \(searchResult?.name)")
-            print("location name \(searchResult?.address)")
+            //print("company name \(searchResult?.name)")
+            //print("location name \(searchResult?.address)")
             //if location isn't listed, print the coords instead
             if (searchResult?.address == nil) {
                 let latString: String = String(format: "%f", searchResult?.location.lat as! CVarArg)
                 let longString: String = String(format: "%f", searchResult?.location.lng as! CVarArg)
                 cell.locationLabel.text = latString + ", " + longString
-                print("search res loc \(searchResult?.location.lat)")
+                //print("search res loc \(searchResult?.location.lat)")
             }
             else {
                 cell.locationLabel.text = searchResult?.address
-                print("search res address \(searchResult?.address)")
+                //print("search res address \(searchResult?.address)")
             }
-            print("returned cell")
+            //print("returned cell")
             
             return cell
             
