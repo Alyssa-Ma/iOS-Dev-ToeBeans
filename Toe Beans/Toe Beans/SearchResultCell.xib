@@ -45,8 +45,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="companyNameLabel" destination="6ML-hA-Nyg" id="0pX-jn-87i"/>
-                <outlet property="locationLabel" destination="N77-ah-GdU" id="6nm-E8-ulp"/>
+                <outlet property="companyNameLabel" destination="6ML-hA-Nyg" id="1PB-Ta-u5R"/>
+                <outlet property="locationLabel" destination="N77-ah-GdU" id="kbx-VN-4af"/>
             </connections>
             <point key="canvasLocation" x="-976" y="-82.019704433497537"/>
         </tableViewCell>

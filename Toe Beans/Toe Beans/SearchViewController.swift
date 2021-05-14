@@ -22,7 +22,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var getLocationButton: UIButton!
     
     //search result array
-    //var searchResults = ResultArray.init(results: searchRes?)
+    var searchResults = [SearchResult]()
     //search result parsed json
     var searchRes: ResultArray?
     //bool if user has done a search
@@ -215,12 +215,18 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 else {
                     print("failed to parse")
                 }
+                print("search results count before \(self.searchResults.count)")
+     
+                
+                //if let resIter = searchRes?.results.
+
+
             }
             catch {
                 print("error json parse: \(error)")
             }
             //refresh table
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 print("refresh table")
                 self.tableView.reloadData()
             }
@@ -305,19 +311,22 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
             let searchResult = searchRes?.results[indexPath.row]
             //set company name
-            cell.companyNameLabel.text = searchRes?.results[indexPath.row].name
-            print("company name \(searchRes?.results[indexPath.row].name)")
-            print("location name \(searchRes?.results[indexPath.row].address)")
+            cell.companyNameLabel.text = searchResult?.name
+            print("company name \(searchResult?.name)")
+            print("location name \(searchResult?.address)")
             //if location isn't listed, print the coords instead
-            if ((searchRes?.results[indexPath.row].location) == nil) {
-                let latString: String = String(format: "%f", searchRes?.results[indexPath.row].location.lat as! CVarArg)
-                let longString: String = String(format: "%f", searchRes?.results[indexPath.row].location.lng as! CVarArg)
+            if (searchResult?.address == nil) {
+                let latString: String = String(format: "%f", searchResult?.location.lat as! CVarArg)
+                let longString: String = String(format: "%f", searchResult?.location.lng as! CVarArg)
                 cell.locationLabel.text = latString + ", " + longString
+                print("search res loc \(searchResult?.location.lat)")
             }
             else {
-                cell.locationLabel.text = searchRes?.results[indexPath.row].address
+                cell.locationLabel.text = searchResult?.address
+                print("search res address \(searchResult?.address)")
             }
             print("returned cell")
+            
             return cell
             
         }

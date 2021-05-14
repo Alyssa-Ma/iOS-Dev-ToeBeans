@@ -7,4 +7,9 @@
 
 import Foundation
 
-
+class SearchResult: Codable {
+    var address: String? = ""
+    var name: String? = ""
+    var lat: String? = ""
+    var long: String? = ""
+}

@@ -8,10 +8,10 @@
 import Foundation
 
 struct ResultArray: Decodable {
-    var results: [SearchResult]
+    var results: [SearchRes]
 }
 //hold values from arr of results
-struct SearchResult: Decodable {
+struct SearchRes: Decodable {
     var address: String?
     var location: Coords
     var name: String?
