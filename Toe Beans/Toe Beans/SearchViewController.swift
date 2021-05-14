@@ -208,11 +208,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
                 //set result count
                 self.resCount = self.searchRes?.results.count
-                //refresh table
-                DispatchQueue.main.async {
-                    print("refresh table")
-                    self.tableView.reloadData()
-                }
                 //print("res count test \(self.resCount)")
                 if let searchRes = self.searchRes {
                     print("test searchres \(searchRes)")
@@ -223,6 +218,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             }
             catch {
                 print("error json parse: \(error)")
+            }
+            //refresh table
+            DispatchQueue.main.sync {
+                print("refresh table")
+                self.tableView.reloadData()
             }
            /**
             if error == nil && data != nil {
@@ -240,7 +240,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             }
              */
         }
-        
         dataTask.resume()
     }
 }
@@ -305,9 +304,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
             let searchResult = searchRes?.results[indexPath.row]
-            //set company name 
+            //set company name
             cell.companyNameLabel.text = searchRes?.results[indexPath.row].name
             print("company name \(searchRes?.results[indexPath.row].name)")
+            print("location name \(searchRes?.results[indexPath.row].address)")
             //if location isn't listed, print the coords instead
             if ((searchRes?.results[indexPath.row].location) == nil) {
                 let latString: String = String(format: "%f", searchRes?.results[indexPath.row].location.lat as! CVarArg)
