@@ -43,6 +43,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var locationLong: String = ""
     //int to hold the number of results
     var resCount: Int? = 0
+    //string to hold fav
+    var favoriteString: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -317,13 +319,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 let longString: String = String(format: "%f", searchResult?.location.lng as! CVarArg)
                 cell.locationLabel.text = latString + ", " + longString
                 //print("search res loc \(searchResult?.location.lat)")
+                //return name + coords if address is nil
+                cell.delegate = self
+                favoriteString = cell.getName(with: "\(searchResult?.name), \(searchResult?.location.lat), \(searchResult?.location.lng)")
+                print("favoritestring test \(favoriteString)")
             }
             else {
                 cell.locationLabel.text = searchResult?.address
                 //print("search res address \(searchResult?.address)")
+                cell.delegate = self
+                favoriteString = cell.getName(with: "\(searchResult?.name), \(searchResult?.address)")
+                print("favoritestring test \(favoriteString)")
             }
             //print("returned cell")
-            cell.delegate = self
+            
             return cell
             
         }
@@ -348,8 +357,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//add favorite string
 extension SearchViewController: SearchResultCellDelegate {
-    func preAddFavorite() {
-        print("received tap from button")
+    func preAddFavorite(with string: String) {
+        print("received tap from button string \(string)")
     }
 }

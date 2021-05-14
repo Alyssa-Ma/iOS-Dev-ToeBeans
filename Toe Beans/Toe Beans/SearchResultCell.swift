@@ -8,12 +8,13 @@
 import UIKit
 
 protocol SearchResultCellDelegate: AnyObject {
-    func preAddFavorite()
+    func preAddFavorite(with string: String)
 }
 
 class SearchResultCell: UITableViewCell {
     public weak var delegate: SearchResultCellDelegate?
     static let identifier = "SearchResultCell"
+    private var string: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,14 @@ class SearchResultCell: UITableViewCell {
     
     @IBAction func addFav() {
         print("button press test")
-        delegate?.preAddFavorite()
+        guard let string = string else {
+            return
+        }
+        delegate?.preAddFavorite(with: string)
+    }
+    
+    public func getName(with string: String) -> String {
+        self.string = string
+        return string
     }
 }

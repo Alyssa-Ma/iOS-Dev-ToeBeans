@@ -10,12 +10,7 @@ import UIKit
 protocol FavoriteDelegate : AnyObject {
     func addFavorite(name: String)
 }
-class FavoriteTableViewController: UITableViewController, FavoriteDelegate {
-    func addFavorite(name: String) {
-        print("test favetable")
-        print("test \(name)")
-    }
-    
+class FavoriteTableViewController: UITableViewController{
 
     var items = [FavoriteItem]()
 
