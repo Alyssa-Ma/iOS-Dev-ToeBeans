@@ -25,5 +25,10 @@ class SearchResultCell: UITableViewCell {
     // MARK:- Outlet Properties
     @IBOutlet var companyNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var favoriteButton: UIButton!
     
+    // MARK: - CoreData
+    @IBAction func addFavorite() {
+        
+    }
 }

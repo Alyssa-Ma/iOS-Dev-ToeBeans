@@ -30,6 +30,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqv-Xt-y0K">
                         <rect key="frame" x="159" y="98" width="72" height="72"/>
                         <state key="normal" backgroundImage="HeartButtonPink"/>
+                        <connections>
+                            <action selector="addFavorite" destination="8hS-WH-ebQ" eventType="touchUpInside" id="gNI-Vf-f6E"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -46,6 +49,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="companyNameLabel" destination="6ML-hA-Nyg" id="1PB-Ta-u5R"/>
+                <outlet property="favoriteButton" destination="qqv-Xt-y0K" id="2Lh-Iz-m1A"/>
                 <outlet property="locationLabel" destination="N77-ah-GdU" id="kbx-VN-4af"/>
             </connections>
             <point key="canvasLocation" x="-976" y="-82.019704433497537"/>
