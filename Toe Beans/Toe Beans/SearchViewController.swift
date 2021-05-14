@@ -344,4 +344,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return indexPath
         }
     }
+    
+    //need to do set heigh manually or cell doesn't display
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
+    }
 }

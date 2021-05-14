@@ -33,15 +33,15 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="N77-ah-GdU" firstAttribute="top" secondItem="6ML-hA-Nyg" secondAttribute="bottom" constant="1.6699999999999999" id="8n8-Wl-VJ4"/>
-                    <constraint firstItem="6ML-hA-Nyg" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="BGg-2D-7Rg"/>
-                    <constraint firstAttribute="trailing" secondItem="qqv-Xt-y0K" secondAttribute="trailing" constant="159" id="G5N-YD-Cqq"/>
-                    <constraint firstItem="N77-ah-GdU" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="Q8M-aM-cb6"/>
-                    <constraint firstItem="qqv-Xt-y0K" firstAttribute="top" secondItem="wXI-NH-18r" secondAttribute="top" constant="98" id="Xkx-fl-JQx"/>
-                    <constraint firstItem="6ML-hA-Nyg" firstAttribute="top" secondItem="qqv-Xt-y0K" secondAttribute="bottom" constant="8" id="jz7-l1-iyZ"/>
-                    <constraint firstAttribute="trailing" secondItem="N77-ah-GdU" secondAttribute="trailing" constant="16" id="pik-vy-ZDZ"/>
-                    <constraint firstItem="qqv-Xt-y0K" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="159" id="rYC-5b-ALO"/>
-                    <constraint firstAttribute="trailing" secondItem="6ML-hA-Nyg" secondAttribute="trailing" constant="16" id="xBY-33-Dhk"/>
+                    <constraint firstAttribute="trailing" secondItem="N77-ah-GdU" secondAttribute="trailing" constant="16" id="0d2-Vp-QtX"/>
+                    <constraint firstItem="6ML-hA-Nyg" firstAttribute="top" secondItem="qqv-Xt-y0K" secondAttribute="bottom" constant="8" symbolic="YES" id="6KE-HY-XEX"/>
+                    <constraint firstItem="N77-ah-GdU" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="8o8-mC-nki"/>
+                    <constraint firstItem="qqv-Xt-y0K" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="159" id="EwG-lc-b5r"/>
+                    <constraint firstItem="N77-ah-GdU" firstAttribute="top" secondItem="6ML-hA-Nyg" secondAttribute="bottom" constant="1.6699999999999999" id="MLZ-lz-QPe"/>
+                    <constraint firstItem="6ML-hA-Nyg" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="N3J-rW-a1A"/>
+                    <constraint firstAttribute="trailing" secondItem="qqv-Xt-y0K" secondAttribute="trailing" constant="159" id="VUc-zY-uv4"/>
+                    <constraint firstAttribute="trailing" secondItem="6ML-hA-Nyg" secondAttribute="trailing" constant="16" id="YF7-Wa-aFv"/>
+                    <constraint firstItem="qqv-Xt-y0K" firstAttribute="top" secondItem="wXI-NH-18r" secondAttribute="top" constant="98" id="ZY8-A9-Ie7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
