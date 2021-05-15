@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		2A0ABC58264F858E00BD1751 /* ClickSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ABC57264F858E00BD1751 /* ClickSound.mp3 */; };
 		2A0ABC5D264F8B2100BD1751 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ABC5C264F8B2100BD1751 /* SearchResultCell.xib */; };
-		2A0ABC67264F924E00BD1751 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ABC66264F924E00BD1751 /* ReviewViewController.swift */; };
+		2A0ABC67264F924E00BD1751 /* AttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ABC66264F924E00BD1751 /* AttributesViewController.swift */; };
 		2A0ABC6C264F93CA00BD1751 /* BusinessResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ABC6B264F93CA00BD1751 /* BusinessResult.swift */; };
+		2A0ABC73264FA9B100BD1751 /* AttributesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ABC72264FA9B100BD1751 /* AttributesArray.swift */; };
 		2A0ED6142627B9BA005CAB59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED6132627B9BA005CAB59 /* AppDelegate.swift */; };
 		2A0ED6162627B9BA005CAB59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED6152627B9BA005CAB59 /* SceneDelegate.swift */; };
 		2A0ED6182627B9BA005CAB59 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED6172627B9BA005CAB59 /* MainScreenViewController.swift */; };
@@ -29,8 +30,9 @@
 /* Begin PBXFileReference section */
 		2A0ABC57264F858E00BD1751 /* ClickSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ClickSound.mp3; sourceTree = "<group>"; };
 		2A0ABC5C264F8B2100BD1751 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
-		2A0ABC66264F924E00BD1751 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		2A0ABC66264F924E00BD1751 /* AttributesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesViewController.swift; sourceTree = "<group>"; };
 		2A0ABC6B264F93CA00BD1751 /* BusinessResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessResult.swift; sourceTree = "<group>"; };
+		2A0ABC72264FA9B100BD1751 /* AttributesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesArray.swift; sourceTree = "<group>"; };
 		2A0ED6102627B9BA005CAB59 /* Toe Beans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toe Beans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0ED6132627B9BA005CAB59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A0ED6152627B9BA005CAB59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +86,8 @@
 				2A0ED6192627B9BA005CAB59 /* Main.storyboard */,
 				2A0ABC5C264F8B2100BD1751 /* SearchResultCell.xib */,
 				2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */,
-				2A0ABC66264F924E00BD1751 /* ReviewViewController.swift */,
+				2A0ABC72264FA9B100BD1751 /* AttributesArray.swift */,
+				2A0ABC66264F924E00BD1751 /* AttributesViewController.swift */,
 				2A0ABC6B264F93CA00BD1751 /* BusinessResult.swift */,
 				2AD12F37264CA9F200389679 /* ResultArray.swift */,
 				2AECE343263BD0CB0033AF06 /* NothingFoundCell.xib */,
@@ -173,8 +176,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A0ABC67264F924E00BD1751 /* ReviewViewController.swift in Sources */,
+				2A0ABC67264F924E00BD1751 /* AttributesViewController.swift in Sources */,
 				2A0ED6182627B9BA005CAB59 /* MainScreenViewController.swift in Sources */,
+				2A0ABC73264FA9B100BD1751 /* AttributesArray.swift in Sources */,
 				2A2EE65B262FC07B00CA8913 /* SearchViewController.swift in Sources */,
 				2A0ED6142627B9BA005CAB59 /* AppDelegate.swift in Sources */,
 				2A0ED61E2627B9BA005CAB59 /* Toe_Beans.xcdatamodeld in Sources */,

@@ -22,6 +22,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var getLocationButton: UIButton!
     @IBOutlet var test: UIButton!
     
+    //var attributeInfo = [R]()
     //search result parsed json
     var searchRes: ResultArray?
     //bool if user has done a search
@@ -205,6 +206,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             do {
                 //decode results
                 self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
+                //self.attributeInfo = try JSONDecoder().decode(AttributesArray.self, from: data)
                 print("test \(self.searchRes)")
                 //set result count
                 self.resCount = self.searchRes?.results.count
@@ -318,6 +320,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             else {
                 cell.locationLabel.text = searchResult?.address
             }
+            
             //print("returned cell")
             UIView.animate(withDuration: 1, animations: {
                             cell.transform = CGAffineTransform.identity}
@@ -329,8 +332,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     //funcs for selection handling
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //attributeInfo[].address = searchRes?.results[indexPath.row].address
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "ShowReview", sender: self)
+        performSegue(withIdentifier: "ShowAttributes", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AttributesViewController {
+            
+            destination.attributesArray = searchRes?.results[(tableView.indexPathForSelectedRow?.row)!]
+        }
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
