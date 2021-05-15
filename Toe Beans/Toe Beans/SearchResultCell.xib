@@ -9,10 +9,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" id="8hS-WH-ebQ" customClass="SearchResultCell" customModule="Toe_Beans" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8hS-WH-ebQ" id="wXI-NH-18r">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of Company" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ML-hA-Nyg">
@@ -21,25 +21,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N77-ah-GdU">
-                        <rect key="frame" x="16" y="66.333333333333329" width="358" height="24"/>
-                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="N77-ah-GdU" secondAttribute="trailing" constant="16" id="J6g-dW-AOD"/>
-                    <constraint firstItem="N77-ah-GdU" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="RUH-at-Dos"/>
-                    <constraint firstItem="N77-ah-GdU" firstAttribute="top" secondItem="6ML-hA-Nyg" secondAttribute="bottom" constant="8" symbolic="YES" id="Re9-bh-Sjo"/>
                     <constraint firstAttribute="trailing" secondItem="6ML-hA-Nyg" secondAttribute="trailing" constant="16" id="fvC-Fs-gjp"/>
                     <constraint firstItem="6ML-hA-Nyg" firstAttribute="top" secondItem="wXI-NH-18r" secondAttribute="top" constant="31" id="fyA-bl-vBE"/>
                     <constraint firstItem="6ML-hA-Nyg" firstAttribute="leading" secondItem="wXI-NH-18r" secondAttribute="leading" constant="16" id="nJN-mD-cpa"/>
+                    <constraint firstAttribute="bottom" secondItem="6ML-hA-Nyg" secondAttribute="bottom" constant="41.670000000000002" id="oCj-xx-6LV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="companyNameLabel" destination="6ML-hA-Nyg" id="1PB-Ta-u5R"/>
-                <outlet property="locationLabel" destination="N77-ah-GdU" id="kbx-VN-4af"/>
             </connections>
             <point key="canvasLocation" x="-976" y="-82.019704433497537"/>
         </tableViewCell>

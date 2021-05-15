@@ -9,29 +9,49 @@ import CoreLocation
 import UIKit
 
 class AttributesViewController: UITableViewController, CLLocationManagerDelegate {
+    var attributesArray: SearchRes!
     
-
-    @IBOutlet weak var name: UILabel!
-    /**
-     @IBOutlet weak var nsme: UILabel!
-     @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var address: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var distance: UILabel!
-     */
-    var attributesArray: SearchRes!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        name.text = attributesArray.name
-        /**
-        address.text = attributesArray.address
         
-        phoneNumber.text = attributesArray.phoneNumber
-        website.text = attributesArray.website
-        distance.text = "\(attributesArray.distance)"
-         */
+        //set labels to new text and nil protection
+        if attributesArray.name != nil {
+            name.text = attributesArray.name!
+        } else {
+            name.text = "No Name"
+        }
+        
+        if attributesArray.address != nil {
+            address.text = "Address: \(attributesArray!.address!)"
+        } else {
+            address.text = "Address: Not listed"
+        }
+        
+        if attributesArray.phoneNumber != nil {
+            phoneNumber.text = "Phone Number: \(attributesArray!.phoneNumber!)"
+        } else {
+            phoneNumber.text = "Phone Number: Not listed"
+        }
+        
+        if attributesArray.website != nil {
+            website.text = "Website: \(attributesArray!.website!)"
+        } else {
+            website.text = "Website: Not listed"
+        }
+        
+        if attributesArray.distance != nil {
+            distance.text = "Distance: \(attributesArray!.distance!)"
+        }
+        else {
+            distance.text = "Distance: Unknown"
+        }
+        
         print(attributesArray)
          
     }

@@ -361,7 +361,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyB-Pw-ph6">
-                                                    <rect key="frame" x="20" y="221" width="350" height="50"/>
+                                                    <rect key="frame" x="20" y="221" width="358" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -380,7 +380,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="cJi-yI-KVu"/>
                     <connections>
-                        <outlet property="namew" destination="I5A-4g-PR2" id="aml-Qt-dd3"/>
+                        <outlet property="address" destination="lJn-bF-fGa" id="Np2-NG-Nhs"/>
+                        <outlet property="distance" destination="kyB-Pw-ph6" id="uhr-WW-OgH"/>
+                        <outlet property="name" destination="I5A-4g-PR2" id="jkA-WS-Hod"/>
+                        <outlet property="phoneNumber" destination="X8Y-Db-u7H" id="th2-vU-rtZ"/>
+                        <outlet property="website" destination="aei-Qm-Tho" id="oTc-wn-ztB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdV-CV-dLd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -22,7 +22,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var getLocationButton: UIButton!
     @IBOutlet var test: UIButton!
     
-    var attrThing = [SearchRes]()
     //search result parsed json
     var searchRes: ResultArray?
     //bool if user has done a search
@@ -47,6 +46,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
 
         //prevent search bar from obscuring table view
         tableView.contentInset = UIEdgeInsets(top: 56, left: 0, bottom: 0, right: 0)
@@ -206,9 +207,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             do {
                 //decode results
                 self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
-                self.attrThing = self.searchRes!.results
-                //self.attributeInfo = try JSONDecoder().decode(AttributesArray.self, from: data)
-                print("test \(self.searchRes)")
+                //print("test \(self.attrThing)")
                 //set result count
                 self.resCount = self.searchRes?.results.count
                 //print("res count test \(self.resCount)")
@@ -312,16 +311,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             //print("company name \(searchResult?.name)")
             //print("location name \(searchResult?.address)")
             //if location isn't listed, print the coords instead
-            if (searchResult?.address == nil) {
-                let latString: String = String(format: "%f", searchResult?.location.lat as! CVarArg)
-                let longString: String = String(format: "%f", searchResult?.location.lng as! CVarArg)
-                cell.locationLabel.text = latString + ", " + longString
-                
-            }
-            else {
-                cell.locationLabel.text = searchResult?.address
-            }
-            
+
             //print("returned cell")
             UIView.animate(withDuration: 1, animations: {
                             cell.transform = CGAffineTransform.identity}
@@ -340,10 +330,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? AttributesViewController {
-     
-            //print("test search \(attrThing[tableView.indexPathForSelectedRow?.row])")
-            destination.attributesArray = searchRes?.results[(tableView.indexPathForSelectedRow?.row)!]
-            //destination.attributesArray = SearchViewController.attrThing[(tableView.indexPathForSelectedRow?.row)!]
+            destination.attributesArray = (searchRes?.results[(tableView.indexPathForSelectedRow?.row)!])!
         }
     }
     
@@ -357,7 +344,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     //need to do set heigh manually or cell doesn't display
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 100
     }
     
 }
