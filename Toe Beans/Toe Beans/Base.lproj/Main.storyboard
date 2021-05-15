@@ -37,7 +37,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="gearshape.fill" catalog="system"/>
                                         <connections>
-                                            <segue destination="KeX-X4-bgj" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="W5v-6n-2Er"/>
+                                            <segue destination="v4R-KZ-xKY" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="W5v-6n-2Er"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="941.53846153846155" y="88.151658767772503"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="A7B-Bm-8lB">
             <objects>
-                <viewController id="KeX-X4-bgj" sceneMemberID="viewController">
+                <viewController id="KeX-X4-bgj" userLabel="Settings View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlP-AF-gC6">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,111 +104,57 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3T-RD-YqA">
-                                        <rect key="frame" x="20" y="132" width="350" height="48"/>
+                                        <rect key="frame" x="20" y="197" width="350" height="48"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2e-h7-9W6">
-                                        <rect key="frame" x="20" y="188" width="35" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                        <state key="normal" title="Cafe">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ol-CV-PhX">
-                                        <rect key="frame" x="20" y="296" width="50" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                        <state key="normal" title="150 m">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAA-Z3-DzB">
-                                        <rect key="frame" x="20" y="240" width="350" height="48"/>
+                                        <rect key="frame" x="20" y="292" width="350" height="48"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFe-Tm-ThX">
-                                        <rect key="frame" x="78" y="296" width="220" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                        <state key="normal" title="500 m">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aah-ky-Fsg">
-                                        <rect key="frame" x="111" y="746" width="168" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                        <state key="normal" title="Home" backgroundImage="SearchButton">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="close" destination="v6x-Ux-cOS" eventType="touchUpInside" id="4oN-Ch-JWR"/>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="3VB-Xi-yck"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPU-je-Ryz">
-                                        <rect key="frame" x="63" y="188" width="208" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                        <state key="normal" title="Bakery">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtH-cD-PAD">
-                                        <rect key="frame" x="20" y="52" width="350" height="72"/>
+                                        <rect key="frame" x="20" y="117" width="350" height="72"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="45"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcC-65-IsS">
-                                        <rect key="frame" x="279" y="188" width="91" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                        <state key="normal" title="Veterinarian">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvD-V1-a5L">
-                                        <rect key="frame" x="306" y="296" width="64" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                        <state key="normal" title="1000 m">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sUr-e3-NXF">
+                                        <rect key="frame" x="20" y="253" width="350" height="32"/>
+                                        <segments>
+                                            <segment title="Cafe"/>
+                                            <segment title="Bakery"/>
+                                            <segment title="Veternarian"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cP8-SC-Fr2">
+                                        <rect key="frame" x="20" y="348" width="350" height="32"/>
+                                        <segments>
+                                            <segment title="150m"/>
+                                            <segment title="500m"/>
+                                            <segment title="1000m"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.77155435090000002" blue="0.98838633300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="uAA-Z3-DzB" firstAttribute="top" secondItem="zPU-je-Ryz" secondAttribute="bottom" constant="8" symbolic="YES" id="1Wv-Zy-RbQ"/>
-                                    <constraint firstItem="2ol-CV-PhX" firstAttribute="top" secondItem="uAA-Z3-DzB" secondAttribute="bottom" constant="8" symbolic="YES" id="2BJ-BZ-0md"/>
-                                    <constraint firstAttribute="trailing" secondItem="RtH-cD-PAD" secondAttribute="trailing" constant="20" symbolic="YES" id="9Gt-wp-j6O"/>
-                                    <constraint firstItem="2ol-CV-PhX" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="DBN-gu-SqE"/>
-                                    <constraint firstAttribute="trailing" secondItem="N3T-RD-YqA" secondAttribute="trailing" constant="20" symbolic="YES" id="FGv-jI-jih"/>
-                                    <constraint firstItem="RtH-cD-PAD" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="HHS-wR-Gs8"/>
-                                    <constraint firstItem="zPU-je-Ryz" firstAttribute="leading" secondItem="X2e-h7-9W6" secondAttribute="trailing" constant="8" symbolic="YES" id="JGf-N9-uze"/>
-                                    <constraint firstItem="uAA-Z3-DzB" firstAttribute="top" secondItem="X2e-h7-9W6" secondAttribute="bottom" constant="8" symbolic="YES" id="LZl-bF-aFq"/>
-                                    <constraint firstItem="UFe-Tm-ThX" firstAttribute="top" secondItem="uAA-Z3-DzB" secondAttribute="bottom" constant="8" symbolic="YES" id="LcN-p7-N8s"/>
-                                    <constraint firstItem="N3T-RD-YqA" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="Msn-ge-lEC"/>
-                                    <constraint firstItem="UFe-Tm-ThX" firstAttribute="leading" secondItem="2ol-CV-PhX" secondAttribute="trailing" constant="8" symbolic="YES" id="R0Q-SQ-5ie"/>
-                                    <constraint firstAttribute="trailing" secondItem="NcC-65-IsS" secondAttribute="trailing" constant="20" symbolic="YES" id="RG6-So-wen"/>
-                                    <constraint firstItem="XvD-V1-a5L" firstAttribute="leading" secondItem="UFe-Tm-ThX" secondAttribute="trailing" constant="8" symbolic="YES" id="Rqt-S3-Om5"/>
-                                    <constraint firstAttribute="trailing" secondItem="XvD-V1-a5L" secondAttribute="trailing" constant="20" symbolic="YES" id="XyN-rE-Zez"/>
-                                    <constraint firstItem="N3T-RD-YqA" firstAttribute="top" secondItem="RtH-cD-PAD" secondAttribute="bottom" constant="8" symbolic="YES" id="YJ9-Y9-qVe"/>
-                                    <constraint firstAttribute="trailing" secondItem="uAA-Z3-DzB" secondAttribute="trailing" constant="20" symbolic="YES" id="ZYS-jB-0ab"/>
-                                    <constraint firstItem="XvD-V1-a5L" firstAttribute="top" secondItem="uAA-Z3-DzB" secondAttribute="bottom" constant="8" symbolic="YES" id="aqc-dV-dEX"/>
-                                    <constraint firstItem="X2e-h7-9W6" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="c4S-lo-Uqu"/>
-                                    <constraint firstItem="zPU-je-Ryz" firstAttribute="top" secondItem="N3T-RD-YqA" secondAttribute="bottom" constant="8" symbolic="YES" id="iiv-fq-RGo"/>
-                                    <constraint firstItem="uAA-Z3-DzB" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="rRC-Xz-0VQ"/>
-                                    <constraint firstItem="RtH-cD-PAD" firstAttribute="top" secondItem="Wt7-Ao-hJJ" secondAttribute="top" constant="52" id="v0Q-yv-68L"/>
-                                    <constraint firstItem="X2e-h7-9W6" firstAttribute="top" secondItem="N3T-RD-YqA" secondAttribute="bottom" constant="8" symbolic="YES" id="wKY-WM-OyS"/>
-                                    <constraint firstItem="NcC-65-IsS" firstAttribute="leading" secondItem="zPU-je-Ryz" secondAttribute="trailing" constant="8" symbolic="YES" id="y8A-5G-Dcb"/>
-                                    <constraint firstItem="NcC-65-IsS" firstAttribute="top" secondItem="N3T-RD-YqA" secondAttribute="bottom" constant="8" symbolic="YES" id="yFX-E1-nhd"/>
+                                    <constraint firstItem="uAA-Z3-DzB" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="091-aA-Nfn"/>
+                                    <constraint firstItem="cP8-SC-Fr2" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="7qW-Tv-9Uc"/>
+                                    <constraint firstItem="RtH-cD-PAD" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="EWA-08-tcc"/>
+                                    <constraint firstItem="N3T-RD-YqA" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="Gq1-yw-o4a"/>
+                                    <constraint firstAttribute="trailing" secondItem="uAA-Z3-DzB" secondAttribute="trailing" constant="20" symbolic="YES" id="JIP-i2-yS9"/>
+                                    <constraint firstItem="sUr-e3-NXF" firstAttribute="top" secondItem="N3T-RD-YqA" secondAttribute="bottom" constant="8" symbolic="YES" id="OnO-bq-uE0"/>
+                                    <constraint firstAttribute="trailing" secondItem="sUr-e3-NXF" secondAttribute="trailing" constant="20" symbolic="YES" id="VIk-py-brf"/>
+                                    <constraint firstAttribute="trailing" secondItem="RtH-cD-PAD" secondAttribute="trailing" constant="20" symbolic="YES" id="WgN-M4-FhK"/>
+                                    <constraint firstItem="RtH-cD-PAD" firstAttribute="top" secondItem="Wt7-Ao-hJJ" secondAttribute="top" constant="117" id="XZC-A5-t1f"/>
+                                    <constraint firstAttribute="trailing" secondItem="cP8-SC-Fr2" secondAttribute="trailing" constant="20" symbolic="YES" id="dxc-L8-L9d"/>
+                                    <constraint firstItem="cP8-SC-Fr2" firstAttribute="top" secondItem="uAA-Z3-DzB" secondAttribute="bottom" constant="8" symbolic="YES" id="fsd-03-BjX"/>
+                                    <constraint firstItem="sUr-e3-NXF" firstAttribute="leading" secondItem="Wt7-Ao-hJJ" secondAttribute="leading" constant="20" symbolic="YES" id="g6A-uT-BHv"/>
+                                    <constraint firstItem="uAA-Z3-DzB" firstAttribute="top" secondItem="sUr-e3-NXF" secondAttribute="bottom" constant="8" symbolic="YES" id="hnL-if-DFP"/>
+                                    <constraint firstItem="N3T-RD-YqA" firstAttribute="top" secondItem="RtH-cD-PAD" secondAttribute="bottom" constant="8" symbolic="YES" id="rQd-WE-Ey9"/>
+                                    <constraint firstAttribute="trailing" secondItem="N3T-RD-YqA" secondAttribute="trailing" constant="20" symbolic="YES" id="ub0-ps-RVI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -223,10 +169,18 @@
                             <constraint firstAttribute="bottom" secondItem="Wt7-Ao-hJJ" secondAttribute="bottom" id="ziQ-CY-eqn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bNV-Xg-HbV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="iFw-Cb-wZc">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="5xR-vt-gLJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INK-38-kDg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983.0769230769231" y="763.50710900473928"/>
+            <point key="canvasLocation" x="2912.3076923076924" y="763.50710900473928"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="OBI-QM-5uB">
@@ -445,11 +399,30 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdV-CV-dLd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3404.6153846153843" y="124.40758293838861"/>
+            <point key="canvasLocation" x="4333.8461538461534" y="124.40758293838861"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5oI-hJ-gK9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v4R-KZ-xKY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KW9-zd-d8a">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.75877553220000005" green="0.70821577309999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KeX-X4-bgj" kind="relationship" relationship="rootViewController" id="taW-XV-K8C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2RD-m3-qzu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983.0769230769231" y="763.50710900473928"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3VB-Xi-yck"/>
+        <segue reference="5xR-vt-gLJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueButton" width="72" height="72"/>
