@@ -205,6 +205,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             do {
                 //decode results
                 self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
+                print("test \(self.searchRes)")
                 //set result count
                 self.resCount = self.searchRes?.results.count
                 //print("res count test \(self.resCount)")
@@ -242,10 +243,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
              */
         }
         dataTask.resume()
-    }
-    
-    func addFavorite() {
-        print("test")
     }
     
 }

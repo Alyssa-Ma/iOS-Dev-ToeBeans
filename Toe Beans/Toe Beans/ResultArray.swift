@@ -15,9 +15,13 @@ struct SearchRes: Decodable {
     var address: String?
     var location: Coords
     var name: String?
+    var phoneNumber: String?
+    var website: String?
+    var distance: Int?
 }
 
-struct Coords: Codable {
+struct Coords: Decodable {
     var lat: Double?
     var lng: Double?
 }
+
