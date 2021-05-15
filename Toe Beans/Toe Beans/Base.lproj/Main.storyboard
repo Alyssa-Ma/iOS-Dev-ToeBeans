@@ -51,9 +51,6 @@
                                 <rect key="frame" x="16" y="710" width="56" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="HeartButton"/>
-                                <connections>
-                                    <segue destination="EW3-CK-l6c" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="HJT-gy-cZy"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoB-Wc-W1t">
                                 <rect key="frame" x="111" y="710" width="168" height="56"/>
@@ -61,6 +58,7 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
                                 <state key="normal" title="Search" backgroundImage="SearchButton"/>
                                 <connections>
+                                    <action selector="playSearchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uX2-9F-UqZ"/>
                                     <segue destination="l77-BN-N0s" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="got-iX-brh"/>
                                 </connections>
                             </button>
@@ -93,55 +91,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="941.53846153846155" y="88.151658767772503"/>
-        </scene>
-        <!--Favorite View Controller-->
-        <scene sceneID="yeZ-Yn-Oa9">
-            <objects>
-                <tableViewController id="ibv-IC-mAf" userLabel="Favorite View Controller" customClass="FavoriteTableViewController" customModule="Toe_Beans" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nmT-jt-f0m">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteItem" id="Smf-v5-7AG">
-                                <rect key="frame" x="0.0" y="28" width="390" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Smf-v5-7AG" id="xEx-Kt-Hqw">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTW-FO-MTq">
-                                            <rect key="frame" x="20" y="5" width="350" height="32.333333333333336"/>
-                                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="CTW-FO-MTq" firstAttribute="top" secondItem="xEx-Kt-Hqw" secondAttribute="top" constant="5" id="2JS-14-uwZ"/>
-                                        <constraint firstAttribute="bottom" secondItem="CTW-FO-MTq" secondAttribute="bottom" constant="6.6699999999999999" id="3d4-6R-FeB"/>
-                                        <constraint firstItem="CTW-FO-MTq" firstAttribute="leading" secondItem="xEx-Kt-Hqw" secondAttribute="leading" constant="20" symbolic="YES" id="6Bf-P4-TWZ"/>
-                                        <constraint firstAttribute="trailing" secondItem="CTW-FO-MTq" secondAttribute="trailing" constant="20" symbolic="YES" id="led-Br-cbH"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ibv-IC-mAf" id="vCG-hb-rs3"/>
-                            <outlet property="delegate" destination="ibv-IC-mAf" id="LAp-uR-3Jt"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="Bw2-Gb-lDW">
-                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="done" id="fFE-uQ-O5S">
-                            <connections>
-                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="g40-Pg-QQ1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="krs-1n-3ar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="940" y="763.50710900473928"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="A7B-Bm-8lB">
@@ -362,29 +311,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKJ-Og-hUd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2729.2307692307691" y="87.440758293838854"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="pP7-EZ-q1I">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EW3-CK-l6c" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jai-xm-9Na">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ibv-IC-mAf" kind="relationship" relationship="rootViewController" id="5t5-zu-POl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MiV-Vx-6j8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="10.769230769230768" y="763.50710900473928"/>
+            <point key="canvasLocation" x="2643" y="104"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g40-Pg-QQ1"/>
+        <segue reference="ALL-Jk-qDM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueButton" width="72" height="72"/>

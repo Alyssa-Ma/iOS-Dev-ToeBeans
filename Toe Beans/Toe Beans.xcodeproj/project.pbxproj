@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0ABC58264F858E00BD1751 /* ClickSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ABC57264F858E00BD1751 /* ClickSound.mp3 */; };
+		2A0ABC5D264F8B2100BD1751 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ABC5C264F8B2100BD1751 /* SearchResultCell.xib */; };
 		2A0ED6142627B9BA005CAB59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED6132627B9BA005CAB59 /* AppDelegate.swift */; };
 		2A0ED6162627B9BA005CAB59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED6152627B9BA005CAB59 /* SceneDelegate.swift */; };
 		2A0ED6182627B9BA005CAB59 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED6172627B9BA005CAB59 /* MainScreenViewController.swift */; };
@@ -16,16 +18,15 @@
 		2A0ED6232627B9BC005CAB59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ED6212627B9BC005CAB59 /* LaunchScreen.storyboard */; };
 		2A2E0839263E122F009E5E3B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2E0838263E122F009E5E3B /* LocationManager.swift */; };
 		2A2EE65B262FC07B00CA8913 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */; };
-		2A5A67E9264F10590053733F /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A67E8264F10590053733F /* FavoriteItem.swift */; };
 		2AD12F38264CA9F200389679 /* ResultArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD12F37264CA9F200389679 /* ResultArray.swift */; };
-		2AECE33E263BC2FE0033AF06 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AECE33D263BC2FE0033AF06 /* SearchResultCell.xib */; };
 		2AECE341263BC6120033AF06 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AECE340263BC6120033AF06 /* SearchResultCell.swift */; };
 		2AECE344263BD0CB0033AF06 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AECE343263BD0CB0033AF06 /* NothingFoundCell.xib */; };
 		2AF1EB4D262E3B30009489F3 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1EB4C262E3B30009489F3 /* AboutViewController.swift */; };
-		2AF1EB50262E45D5009489F3 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1EB4F262E45D5009489F3 /* FavoriteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A0ABC57264F858E00BD1751 /* ClickSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ClickSound.mp3; sourceTree = "<group>"; };
+		2A0ABC5C264F8B2100BD1751 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		2A0ED6102627B9BA005CAB59 /* Toe Beans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toe Beans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0ED6132627B9BA005CAB59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A0ED6152627B9BA005CAB59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,13 +38,10 @@
 		2A0ED6242627B9BC005CAB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A2E0838263E122F009E5E3B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		2A5A67E8264F10590053733F /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		2AD12F37264CA9F200389679 /* ResultArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultArray.swift; sourceTree = "<group>"; };
-		2AECE33D263BC2FE0033AF06 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		2AECE340263BC6120033AF06 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		2AECE343263BD0CB0033AF06 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		2AF1EB4C262E3B30009489F3 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		2AF1EB4F262E45D5009489F3 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,19 +78,18 @@
 				2A0ED6152627B9BA005CAB59 /* SceneDelegate.swift */,
 				2A0ED6172627B9BA005CAB59 /* MainScreenViewController.swift */,
 				2A0ED6192627B9BA005CAB59 /* Main.storyboard */,
-				2AECE33D263BC2FE0033AF06 /* SearchResultCell.xib */,
+				2A0ABC5C264F8B2100BD1751 /* SearchResultCell.xib */,
 				2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */,
 				2AECE343263BD0CB0033AF06 /* NothingFoundCell.xib */,
 				2AECE340263BC6120033AF06 /* SearchResultCell.swift */,
 				2AD12F37264CA9F200389679 /* ResultArray.swift */,
 				2A2E0838263E122F009E5E3B /* LocationManager.swift */,
-				2AF1EB4F262E45D5009489F3 /* FavoriteTableViewController.swift */,
-				2A5A67E8264F10590053733F /* FavoriteItem.swift */,
 				2AF1EB4C262E3B30009489F3 /* AboutViewController.swift */,
 				2A0ED61F2627B9BC005CAB59 /* Assets.xcassets */,
 				2A0ED6212627B9BC005CAB59 /* LaunchScreen.storyboard */,
 				2A0ED6242627B9BC005CAB59 /* Info.plist */,
 				2A0ED61C2627B9BA005CAB59 /* Toe_Beans.xcdatamodeld */,
+				2A0ABC57264F858E00BD1751 /* ClickSound.mp3 */,
 			);
 			path = "Toe Beans";
 			sourceTree = "<group>";
@@ -156,8 +153,9 @@
 			files = (
 				2A0ED6232627B9BC005CAB59 /* LaunchScreen.storyboard in Resources */,
 				2A0ED6202627B9BC005CAB59 /* Assets.xcassets in Resources */,
-				2AECE33E263BC2FE0033AF06 /* SearchResultCell.xib in Resources */,
+				2A0ABC58264F858E00BD1751 /* ClickSound.mp3 in Resources */,
 				2AECE344263BD0CB0033AF06 /* NothingFoundCell.xib in Resources */,
+				2A0ABC5D264F8B2100BD1751 /* SearchResultCell.xib in Resources */,
 				2A0ED61B2627B9BA005CAB59 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,13 +171,11 @@
 				2A2EE65B262FC07B00CA8913 /* SearchViewController.swift in Sources */,
 				2A0ED6142627B9BA005CAB59 /* AppDelegate.swift in Sources */,
 				2A0ED61E2627B9BA005CAB59 /* Toe_Beans.xcdatamodeld in Sources */,
-				2A5A67E9264F10590053733F /* FavoriteItem.swift in Sources */,
 				2AF1EB4D262E3B30009489F3 /* AboutViewController.swift in Sources */,
 				2A0ED6162627B9BA005CAB59 /* SceneDelegate.swift in Sources */,
 				2AECE341263BC6120033AF06 /* SearchResultCell.swift in Sources */,
 				2AD12F38264CA9F200389679 /* ResultArray.swift in Sources */,
 				2A2E0839263E122F009E5E3B /* LocationManager.swift in Sources */,
-				2AF1EB50262E45D5009489F3 /* FavoriteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

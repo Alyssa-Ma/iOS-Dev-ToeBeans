@@ -7,6 +7,6 @@
 
 import Foundation
 
-class FavoriteItem {
+struct FavoriteItem {
     var text = ""
 }

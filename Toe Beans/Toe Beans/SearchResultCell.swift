@@ -7,15 +7,11 @@
 
 import UIKit
 
-protocol SearchResultCellDelegate: AnyObject {
-    func preAddFavorite(with string: String) -> String
-}
 
-class SearchResultCell: UITableViewCell, FavoriteDelegate {
-    public weak var delegate: SearchResultCellDelegate?
-    static let identifier = "SearchResultCell"
-    private var string: String?
-    var stringTest: String?
+class SearchResultCell: UITableViewCell{
+
+    var string: String = ""
+    var stringTest: String = ""
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,24 +31,5 @@ class SearchResultCell: UITableViewCell, FavoriteDelegate {
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var favoriteButton: UIButton!
     
-    @IBAction func addFav() {
-        print("button press test")
-        guard let string = string else {
-            return
-        }
-        stringTest = delegate?.preAddFavorite(with: string)
-        print("string test pre add fav \(stringTest)")
-        addFavorite(with: string)
-    }
-    func addFavorite(with string: String) -> String {
-        print("favorite delgate test string return \(string)")
-        return string
-    }
-    
-    public func getName(with string: String) -> String {
-        self.string = string
-        print("test access inside cell \(string)")
-        return string
-    }
 }
 
