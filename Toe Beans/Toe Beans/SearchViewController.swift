@@ -22,7 +22,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var getLocationButton: UIButton!
     @IBOutlet var test: UIButton!
     
-    //var attributeInfo = [R]()
+    var attrThing = [SearchRes]()
     //search result parsed json
     var searchRes: ResultArray?
     //bool if user has done a search
@@ -206,6 +206,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             do {
                 //decode results
                 self.searchRes = try JSONDecoder().decode(ResultArray.self, from: data)
+                self.attrThing = self.searchRes!.results
                 //self.attributeInfo = try JSONDecoder().decode(AttributesArray.self, from: data)
                 print("test \(self.searchRes)")
                 //set result count
@@ -334,13 +335,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //attributeInfo[].address = searchRes?.results[indexPath.row].address
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "ShowAttributes", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? AttributesViewController {
-            
+     
+            //print("test search \(attrThing[tableView.indexPathForSelectedRow?.row])")
             destination.attributesArray = searchRes?.results[(tableView.indexPathForSelectedRow?.row)!]
+            //destination.attributesArray = SearchViewController.attrThing[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
     
