@@ -8,8 +8,6 @@
 import UIKit
 import Foundation
 
-
-
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var radiusSegment: UISegmentedControl!
@@ -100,17 +98,6 @@ class SettingsViewController: UIViewController {
         updateRadius()
     }
     
-    func getPlaceType() -> String {
-        let returnString = userDefaults.string(forKey: apiKey)!
-        print("user default protocol return \(returnString)")
-        return returnString
-    }
-    
-    func getRadius() -> String {
-        let returnString = userDefaults.string(forKey: radKey)!
-        print("user default protocol return \(returnString)")
-        return returnString
-    }
     /*
     // MARK: - Navigation
 
