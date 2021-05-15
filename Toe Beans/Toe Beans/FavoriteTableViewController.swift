@@ -8,12 +8,16 @@
 import UIKit
 
 protocol FavoriteDelegate : AnyObject {
-    func addFavorite(name: String)
+    func addFavorite(with string: String) -> String
 }
 class FavoriteTableViewController: UITableViewController{
 
     var items = [FavoriteItem]()
-
+    var favoriteString: String?
+    private var string: String?
+    public weak var delegate: FavoriteDelegate?
+    static let identifier = "FavoriteDelegate?"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,8 @@ class FavoriteTableViewController: UITableViewController{
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        //let item1 = FavoriteItem()
         let item1 = FavoriteItem()
         item1.text = "test1"
         items.append(item1)
@@ -31,11 +37,18 @@ class FavoriteTableViewController: UITableViewController{
         item2.text = "test2"
         items.append(item2)
     }
+
     
     // MARK: - Helper methods
     func configureText(for cell: UITableViewCell, with item: FavoriteItem) {
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
+    }
+    
+    public func getString(with string: String) -> String {
+        self.string = string
+        print("test access inside cell favorite \(string)")
+        return string
     }
     
     // MARK: - Table view data source
@@ -46,6 +59,8 @@ class FavoriteTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteItem", for: indexPath)
+        favoriteString = delegate?.addFavorite(with: string!)
+        print("favorite string test \(favoriteString)")
         let item = items[indexPath.row]
         configureText(for: cell, with: item)
         return cell
@@ -56,10 +71,4 @@ class FavoriteTableViewController: UITableViewController{
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    // MARK:- IB Actions
-    @IBAction func close()
-    {
-        dismiss(animated: true, completion: nil)
-    }
-
 }

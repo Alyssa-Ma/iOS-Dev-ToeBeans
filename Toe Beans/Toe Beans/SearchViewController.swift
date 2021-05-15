@@ -8,6 +8,9 @@ import Foundation
 import CoreLocation
 import UIKit
 
+protocol SearchViewControllerDelegate: AnyObject {
+    func returnFavorite() -> String
+}
 class SearchViewController: UIViewController, CLLocationManagerDelegate {
     struct TableView {
         struct CellIdentifiers {
@@ -318,10 +321,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 let latString: String = String(format: "%f", searchResult?.location.lat as! CVarArg)
                 let longString: String = String(format: "%f", searchResult?.location.lng as! CVarArg)
                 cell.locationLabel.text = latString + ", " + longString
+                favoriteString = cell.getName(with: "\(searchResult?.name), \(searchResult?.location.lat) , \(searchResult?.location.lng)")
                 //print("search res loc \(searchResult?.location.lat)")
                 //return name + coords if address is nil
                 cell.delegate = self
-                favoriteString = cell.getName(with: "\(searchResult?.name), \(searchResult?.location.lat), \(searchResult?.location.lng)")
+                
                 print("favoritestring test \(favoriteString)")
             }
             else {
@@ -359,7 +363,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 //add favorite string
 extension SearchViewController: SearchResultCellDelegate {
-    func preAddFavorite(with string: String) {
+    func preAddFavorite(with string: String) -> String {
         print("received tap from button string \(string)")
+        return string
     }
 }
+
+
