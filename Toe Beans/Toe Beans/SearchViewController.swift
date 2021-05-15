@@ -43,6 +43,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var locationLong: String = ""
     //int to hold the number of results
     var resCount: Int? = 0
+    //hold placetype
+    var placeType: String = ""
+    var apiRadius: String = ""
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         
         //keyboard on launch
         searchBar.becomeFirstResponder()
+        //on load, get the current defaults, can't use delegate yet or nil
+        placeType = userDefaults.string(forKey: "apiKey")!
+        apiRadius = userDefaults.string(forKey: "radKey")!
+        //print("types \(placeType) \(apiRadius)")
     }
     
     //get location
@@ -174,8 +182,8 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     func APIHandling() {
         //print("url lat test \(locationLat)")
         //set url based on the given coords
-        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat)%2C\(locationLong)&language=en&radius=150&type=cafe")
-        //print("url test \(url)")
+        let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat)%2C\(locationLong)&language=en&radius=\(apiRadius)&type=\(placeType)")
+        print("url test \(url)")
         //print(url)
         //protect from getting nil url
         guard url != nil else {

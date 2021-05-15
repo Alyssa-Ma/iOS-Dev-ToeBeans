@@ -95,7 +95,7 @@
         <!--Settings View Controller-->
         <scene sceneID="A7B-Bm-8lB">
             <objects>
-                <viewController id="KeX-X4-bgj" userLabel="Settings View Controller" sceneMemberID="viewController">
+                <viewController id="KeX-X4-bgj" userLabel="Settings View Controller" customClass="SettingsViewController" customModule="Toe_Beans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mlP-AF-gC6">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,6 +128,9 @@
                                             <segment title="Bakery"/>
                                             <segment title="Veternarian"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="apiSegmentChanged:" destination="KeX-X4-bgj" eventType="valueChanged" id="zhS-4j-qJ8"/>
+                                        </connections>
                                     </segmentedControl>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cP8-SC-Fr2">
                                         <rect key="frame" x="20" y="348" width="350" height="32"/>
@@ -136,6 +139,9 @@
                                             <segment title="500m"/>
                                             <segment title="1000m"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="radiusSegmentChanged:" destination="KeX-X4-bgj" eventType="valueChanged" id="MFR-cP-kl8"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.77155435090000002" blue="0.98838633300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -177,6 +183,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="apiSegment" destination="sUr-e3-NXF" id="UlY-Ck-HjP"/>
+                        <outlet property="radiusSegment" destination="cP8-SC-Fr2" id="1gG-Yd-kij"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INK-38-kDg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
