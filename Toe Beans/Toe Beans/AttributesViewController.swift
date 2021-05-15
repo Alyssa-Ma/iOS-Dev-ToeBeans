@@ -46,7 +46,7 @@ class AttributesViewController: UITableViewController, CLLocationManagerDelegate
         }
         
         if attributesArray.distance != nil {
-            distance.text = "Distance: \(attributesArray!.distance!)"
+            distance.text = "Distance: \(attributesArray!.distance!) meters"
         }
         else {
             distance.text = "Distance: Unknown"
