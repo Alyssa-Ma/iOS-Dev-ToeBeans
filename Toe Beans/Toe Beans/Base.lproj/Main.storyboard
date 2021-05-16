@@ -23,8 +23,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kkS-jW-gaS">
                                         <rect key="frame" x="10" y="50" width="355" height="607"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="60" placeholderIntrinsicHeight="60" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mV7-CB-ae9">
-                                                <rect key="frame" x="147.5" y="0.0" width="60" height="59.5"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mV7-CB-ae9">
+                                                <rect key="frame" x="147.5" y="0.0" width="60.5" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60.5" id="1bh-b6-8gD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" backgroundImage="gearshape.fill" catalog="system"/>
                                                 <connections>
