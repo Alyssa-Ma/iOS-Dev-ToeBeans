@@ -8,7 +8,8 @@ import Foundation
 import CoreLocation
 import UIKit
 
-class AttributesViewController: UITableViewController, CLLocationManagerDelegate {
+class AttributesViewController: UITableViewController, CLLocationManagerDelegate, FavoritesDelegate {
+
     var attributesArray: SearchRes!
     
     @IBOutlet weak var address: UILabel!
@@ -16,6 +17,7 @@ class AttributesViewController: UITableViewController, CLLocationManagerDelegate
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var addFavoriteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +55,27 @@ class AttributesViewController: UITableViewController, CLLocationManagerDelegate
         }
         
         print(attributesArray)
+        //after 2 seconds, push attributesviewcontroller
+        perform(#selector(advance), with: nil, afterDelay: 2)
          
+    }
+    
+    func sendData() -> String {
+        let retSTr = "attributes controller \(attributesArray.address)"
+        print(retSTr)
+        return retSTr
+    }
+    
+    @IBAction func addFavorite() {
+        
+        performSegue(withIdentifier: "AddFavorite", sender: self)
+    }
+    
+    @objc func advance () {
+        let vc = FavoritesViewController()
+        //run methods called by delegates
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

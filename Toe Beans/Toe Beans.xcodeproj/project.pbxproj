@@ -19,6 +19,7 @@
 		2A0ED61E2627B9BA005CAB59 /* Toe_Beans.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A0ED61C2627B9BA005CAB59 /* Toe_Beans.xcdatamodeld */; };
 		2A0ED6202627B9BC005CAB59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ED61F2627B9BC005CAB59 /* Assets.xcassets */; };
 		2A0ED6232627B9BC005CAB59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A0ED6212627B9BC005CAB59 /* LaunchScreen.storyboard */; };
+		2A1414C326519A830019381C /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1414C226519A830019381C /* FavoritesViewController.swift */; };
 		2A2E0839263E122F009E5E3B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2E0838263E122F009E5E3B /* LocationManager.swift */; };
 		2A2EE65B262FC07B00CA8913 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */; };
 		2AD12F38264CA9F200389679 /* ResultArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD12F37264CA9F200389679 /* ResultArray.swift */; };
@@ -42,6 +43,7 @@
 		2A0ED61F2627B9BC005CAB59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A0ED6222627B9BC005CAB59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A0ED6242627B9BC005CAB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A1414C226519A830019381C /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		2A2E0838263E122F009E5E3B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2AD12F37264CA9F200389679 /* ResultArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultArray.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				2A0ED6152627B9BA005CAB59 /* SceneDelegate.swift */,
 				2A0ED6172627B9BA005CAB59 /* MainScreenViewController.swift */,
 				2A0ED6192627B9BA005CAB59 /* Main.storyboard */,
+				2A1414C226519A830019381C /* FavoritesViewController.swift */,
 				2A01E5C2265061F000B019F8 /* SettingsViewController.swift */,
 				2A0ABC5C264F8B2100BD1751 /* SearchResultCell.xib */,
 				2A2EE65A262FC07B00CA8913 /* SearchViewController.swift */,
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A1414C326519A830019381C /* FavoritesViewController.swift in Sources */,
 				2A0ABC67264F924E00BD1751 /* AttributesViewController.swift in Sources */,
 				2A0ED6182627B9BA005CAB59 /* MainScreenViewController.swift in Sources */,
 				2A2EE65B262FC07B00CA8913 /* SearchViewController.swift in Sources */,
