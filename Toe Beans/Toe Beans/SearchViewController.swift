@@ -8,6 +8,11 @@ import Foundation
 import CoreLocation
 import UIKit
 
+protocol searchDelegate {
+    func getPlace() -> String
+    func getRadius() -> String
+}
+
 class SearchViewController: UIViewController, CLLocationManagerDelegate {
     struct TableView {
         struct CellIdentifiers {
@@ -47,6 +52,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var placeType: String = ""
     var apiRadius: String = ""
     let userDefaults = UserDefaults.standard
+    //delegate
+    var delegate: searchDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +75,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //keyboard on launch
         searchBar.becomeFirstResponder()
         //on load, get the current defaults, can't use delegate yet or nil
+        //placeType = (delegate?.getPlace())!
         if userDefaults.string(forKey: "apiKey") == nil {
             placeType = "cafe"
         }

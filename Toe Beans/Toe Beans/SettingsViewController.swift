@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, searchDelegate {
     
     @IBOutlet weak var radiusSegment: UISegmentedControl!
     @IBOutlet weak var apiSegment: UISegmentedControl!
@@ -96,6 +96,15 @@ class SettingsViewController: UIViewController {
             userDefaults.set(rad150, forKey: radKey)
         }
         updateRadius()
+    }
+    
+    func getPlace() -> String {
+        //print(userDefaults.string(forKey: apiKey)!)()
+        return userDefaults.string(forKey: apiKey)!
+    }
+    
+    func getRadius() -> String {
+        return userDefaults.string(forKey: radKey)!
     }
     
     /*
