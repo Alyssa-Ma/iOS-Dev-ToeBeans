@@ -8,29 +8,27 @@
 import UIKit
 
 protocol FavoritesDelegate: AnyObject {
-    func sendData() -> String
+    func sendData(favorite: SearchRes!)
 }
 
-class FavoritesViewController: UIViewController {    
+class FavoritesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     //to hold favorites
     static var favorites = [SearchRes]()
-    //delegate data to favorites
-    var delegate: FavoritesDelegate?
-    var test: String?
-    
+    //delegate
+    var favDelegate: FavoritesDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //reload tableview to display new
-        self.tableView.reloadData()
+        tableView.reloadData()
         tableView.delegate = self
         tableView.dataSource = self
-        //test = delegate?.sendData()
-        print("favorites view test \(test)")
+
     }
-            
+        
     // MARK:- IB Actions
     @IBAction func close() {
         dismiss(animated: true, completion: nil)
@@ -44,7 +42,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "FavoriteCell")
         //return favorite cell in index
         let favoriteCell = FavoritesViewController.favorites[indexPath.row]
         //display the place name
@@ -54,6 +52,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     //funcs for selection handling
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //favDelegate?.sendData(favorite: FavoritesViewController.favorites[indexPath.row])
         //show attributes when tapping on cell
         performSegue(withIdentifier: "FavoriteShowAttributes", sender: self)
     }
@@ -73,5 +72,13 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         }
         //reload tableview after deleting
         tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AttributesViewController {
+            destination.attributesArray = FavoritesViewController.favorites[(tableView.indexPathForSelectedRow?.row)!]
+            //came from favorites view
+            destination.cameFromFavorite = true
+        }
     }
 }

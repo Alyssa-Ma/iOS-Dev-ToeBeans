@@ -357,7 +357,7 @@
             <objects>
                 <tableViewController id="W52-cK-oa1" customClass="AttributesViewController" customModule="Toe_Beans" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Bn-X0-tg1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -382,7 +382,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="addFavorite" destination="W52-cK-oa1" eventType="touchUpInside" id="q4o-sd-hMe"/>
-                                                        <segue destination="qfn-oS-31l" kind="presentation" identifier="AddFavorite" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="hGX-3Z-1Yc"/>
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SKa-OL-yRm">
@@ -441,11 +440,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="cJi-yI-KVu"/>
                     <connections>
+                        <outlet property="addFavoriteButton" destination="zKJ-fH-ah0" id="52V-Vx-OVZ"/>
                         <outlet property="address" destination="lJn-bF-fGa" id="Np2-NG-Nhs"/>
                         <outlet property="distance" destination="kyB-Pw-ph6" id="uhr-WW-OgH"/>
                         <outlet property="name" destination="I5A-4g-PR2" id="jkA-WS-Hod"/>
                         <outlet property="phoneNumber" destination="X8Y-Db-u7H" id="th2-vU-rtZ"/>
                         <outlet property="website" destination="aei-Qm-Tho" id="oTc-wn-ztB"/>
+                        <segue destination="qfn-oS-31l" kind="presentation" identifier="AddFavorite" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="HDr-g3-xmN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdV-CV-dLd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -464,15 +465,15 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kP8-gx-Afh">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCell" id="kP8-gx-Afh">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kP8-gx-Afh" id="jEQ-Xz-v9L">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zd-Il-39d">
-                                                    <rect key="frame" x="16" y="7" width="343" height="28"/>
+                                                    <rect key="frame" x="16" y="7" width="343" height="28.5"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -559,7 +560,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hGX-3Z-1Yc"/>
+        <segue reference="HDr-g3-xmN"/>
         <segue reference="AEi-mO-bUQ"/>
         <segue reference="5xR-vt-gLJ"/>
     </inferredMetricsTieBreakers>

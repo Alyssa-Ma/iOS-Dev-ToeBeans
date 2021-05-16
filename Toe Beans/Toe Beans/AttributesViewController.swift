@@ -8,9 +8,11 @@ import Foundation
 import CoreLocation
 import UIKit
 
-class AttributesViewController: UITableViewController, CLLocationManagerDelegate, FavoritesDelegate {
-
+class AttributesViewController: UITableViewController, FavoritesDelegate {
+    
     var attributesArray: SearchRes!
+    var vc: FavoritesViewController?
+    var cameFromFavorite: Bool = false
     
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var name: UILabel!
@@ -53,36 +55,33 @@ class AttributesViewController: UITableViewController, CLLocationManagerDelegate
         else {
             distance.text = "Distance: Unknown"
         }
-        
         print(attributesArray)
-        //after 2 seconds, push attributesviewcontroller
-        perform(#selector(advance), with: nil, afterDelay: 2)
-         
     }
     
-    func sendData() -> String {
-        let retSTr = "attributes controller \(attributesArray.address)"
-        print(retSTr)
-        return retSTr
+    //when view appears, if the favorite is already in the array, don't show the favorite button
+    override func viewWillAppear(_ animated: Bool) {
+        for favorites in FavoritesViewController.favorites {
+            if favorites.name == attributesArray.name && favorites.distance == attributesArray.distance {
+                addFavoriteButton.isHidden = true
+            }
+            
+        }
     }
     
     @IBAction func addFavorite() {
-        
+        FavoritesViewController.favorites.append(attributesArray)
         performSegue(withIdentifier: "AddFavorite", sender: self)
-    }
-    
-    @objc func advance () {
-        let vc = FavoritesViewController()
-        //run methods called by delegates
-        vc.delegate = self
-        present(vc, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    func sendData(favorite: SearchRes!) {
+        vc!.favDelegate = self
+        print("test")
+        attributesArray = favorite
+    }
     
 }
-
 
 
