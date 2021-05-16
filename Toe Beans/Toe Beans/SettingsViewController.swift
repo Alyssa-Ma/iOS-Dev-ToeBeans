@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("user default protocol return \(userDefaults.string(forKey: apiKey)!)")
+        
         updateAPI()
         updateRadius()
         // Do any additional setup after loading the view.

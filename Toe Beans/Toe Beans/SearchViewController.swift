@@ -67,8 +67,19 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //keyboard on launch
         searchBar.becomeFirstResponder()
         //on load, get the current defaults, can't use delegate yet or nil
-        placeType = userDefaults.string(forKey: "apiKey")!
-        apiRadius = userDefaults.string(forKey: "radKey")!
+        if userDefaults.string(forKey: "apiKey") == nil {
+            placeType = "cafe"
+        }
+        else {
+            placeType = userDefaults.string(forKey: "apiKey")!
+        }
+        
+        if userDefaults.string(forKey: "radKey") == nil {
+            apiRadius = "150"
+        }
+        else {
+            apiRadius = userDefaults.string(forKey: "radKey")!
+        }
         //print("types \(placeType) \(apiRadius)")
     }
     
