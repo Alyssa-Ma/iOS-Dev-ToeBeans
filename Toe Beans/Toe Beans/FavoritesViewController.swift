@@ -2,7 +2,7 @@
 //  FavoritesViewController.swift
 //  Toe Beans
 //
-//  Created by Alyssa Ma on 5/16/21.
+//  Created by Alyssa Ma on 4/20/21.
 //
 
 import UIKit
@@ -28,7 +28,8 @@ class FavoritesViewController: UIViewController {
         tableView.dataSource = self
 
     }
-        
+    
+    //return to previous screen
     // MARK:- IB Actions
     @IBAction func close() {
         dismiss(animated: true, completion: nil)
@@ -38,15 +39,18 @@ class FavoritesViewController: UIViewController {
 // MARK: - Table View Delegate
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return number of favorites
         return FavoritesViewController.favorites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "FavoriteCell")
-        //return favorite cell in index
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        //return favorite obj at row
         let favoriteCell = FavoritesViewController.favorites[indexPath.row]
         //display the place name
         cell.textLabel?.text = favoriteCell.name
+        //change font of cell
+        cell.textLabel?.font = UIFont(name: "Noteworthy", size: 17)
         return cell
     }
     

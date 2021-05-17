@@ -15,13 +15,18 @@ class MainScreenViewController: UIViewController{
         // Do any additional setup after loading the view.
     }
     
+    // MARK:- Sound Functionality
+    //when search button is pressed, play click sound
     @IBAction func playSearchButton(_ sender: Any) {
         playSound()
     }
-   
+    
+    //func to play sound from button
     func playSound() {
-        let soundURL = Bundle.main.path(forResource: "ClickSound", ofType: "mp3")
+        //mp3 path
+        let soundURL = Bundle.main.path(forResource: "Tiny Button Push-SoundBible.com-513260752", ofType: "mp3")
         
+        //try to play sound
         do {
             try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: soundURL!))
             print("success audio")

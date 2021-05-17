@@ -357,7 +357,7 @@
             <objects>
                 <tableViewController id="W52-cK-oa1" customClass="AttributesViewController" customModule="Toe_Beans" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Bn-X0-tg1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -560,9 +560,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="cMY-0N-u9q"/>
         <segue reference="HDr-g3-xmN"/>
         <segue reference="AEi-mO-bUQ"/>
-        <segue reference="5xR-vt-gLJ"/>
+        <segue reference="ALL-Jk-qDM"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueButton" width="72" height="72"/>

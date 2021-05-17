@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+//custom tablecell setup
 class SearchResultCell: UITableViewCell{
 
     var string: String = ""
@@ -28,8 +28,6 @@ class SearchResultCell: UITableViewCell{
 
     // MARK:- Outlet Properties
     @IBOutlet var companyNameLabel: UILabel!
-    @IBOutlet var locationLabel: UILabel!
-    @IBOutlet var favoriteButton: UIButton!
     
 }
 

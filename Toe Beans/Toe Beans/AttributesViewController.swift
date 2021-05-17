@@ -24,6 +24,8 @@ class AttributesViewController: UITableViewController, FavoritesDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK:- Attribute Label Setup
+        
         //set labels to new text and nil protection
         if attributesArray.name != nil {
             name.text = attributesArray.name!
@@ -55,27 +57,38 @@ class AttributesViewController: UITableViewController, FavoritesDelegate {
         else {
             distance.text = "Distance: Unknown"
         }
-        print(attributesArray)
+        //print(attributesArray)
     }
+    
+    // MARK:- Helper Methods
     
     //when view appears, if the favorite is already in the array, don't show the favorite button
     override func viewWillAppear(_ animated: Bool) {
+        //loop through favorites to check
         for favorites in FavoritesViewController.favorites {
+            //check name and distance values
             if favorites.name == attributesArray.name && favorites.distance == attributesArray.distance {
+                //hide button if it's the same
                 addFavoriteButton.isHidden = true
             }
             
         }
     }
     
+    //add favorite button
     @IBAction func addFavorite() {
+        //append to favorites array
         FavoritesViewController.favorites.append(attributesArray)
+        //move to favorites screen
         performSegue(withIdentifier: "AddFavorite", sender: self)
     }
     
+    //animate deselecting row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    //delegate data back
     func sendData(favorite: SearchRes!) {
         vc!.favDelegate = self
         print("test")

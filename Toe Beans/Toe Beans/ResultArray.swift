@@ -7,6 +7,7 @@
 
 import Foundation
 
+//based on format of the api
 struct ResultArray: Decodable {
     var results: [SearchRes]
 }

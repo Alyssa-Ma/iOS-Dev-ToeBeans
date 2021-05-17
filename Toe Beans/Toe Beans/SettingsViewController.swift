@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController, searchDelegate {
     @IBOutlet weak var radiusSegment: UISegmentedControl!
     @IBOutlet weak var apiSegment: UISegmentedControl!
     
+    //segment values
     let apiKey = "apiKey"
     let radKey = "radKey"
     let cafe = "cafe"
@@ -32,7 +33,8 @@ class SettingsViewController: UIViewController, searchDelegate {
         // Do any additional setup after loading the view.
     }
     
-    //send info to delegate
+    // MARK:- Segment Handling
+    //update segment index based on what the current user default is
     func updateAPI() {
         let apiSet = userDefaults.string(forKey: apiKey)
         if (apiSet == cafe) {

@@ -16,6 +16,7 @@ protocol searchDelegate {
 class SearchViewController: UIViewController, CLLocationManagerDelegate {
     struct TableView {
         struct CellIdentifiers {
+            //custom table cells
             static let searchResultCell = "SearchResultCell"
             static let nothingFoundCell = "NothingFoundCell"
         }
@@ -51,9 +52,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var placeType: String = ""
     var apiRadius: String = ""
     let userDefaults = UserDefaults.standard
-    //delegate
-    var delegate: searchDelegate?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +72,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //keyboard on launch
         searchBar.becomeFirstResponder()
         //on load, get the current defaults, can't use delegate yet or nil
-        //placeType = (delegate?.getPlace())!
         if userDefaults.string(forKey: "apiKey") == nil {
             placeType = "cafe"
         }
@@ -88,7 +85,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         else {
             apiRadius = userDefaults.string(forKey: "radKey")!
         }
-        //print("types \(placeType) \(apiRadius)")
     }
     
     //get location
@@ -200,9 +196,9 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - API Handling
     func APIHandling() {
         //print("url lat test \(locationLat)")
-        //set url based on the given coords
+        //set url based on the given params
         let url = URL(string: "https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=\(locationLat)%2C\(locationLong)&language=en&radius=\(apiRadius)&type=\(placeType)")
-        print("url test \(url)")
+        //print("url test \(url)")
         //print(url)
         //protect from getting nil url
         guard url != nil else {
@@ -216,7 +212,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         //Header
         let header = ["x-rapidapi-key": "6bcca20f97mshb8796872ad007a7p13b6f1jsn4b2319dd60cf",
                        "x-rapidapi-host": "trueway-places.p.rapidapi.com"]
-        print(header)
+        //print(header)
         request.allHTTPHeaderFields = header
         
         //Req type
@@ -229,7 +225,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             //protect from nil
             guard let data = data else {return}
-            
             
             do {
                 //decode results
@@ -299,13 +294,12 @@ extension SearchViewController: UISearchBarDelegate {
                     self!.locationLong = String(format: "%.8f", locations[0].coordinates?.longitude as! CVarArg)
                     //do api handling
                     self?.APIHandling()
-                    
                 }
                 else {
                     print("couldn't find location")
                 }
-            }}
-
+            }
+            }
         }
     }
     //fixes white line right above search bar
@@ -317,10 +311,13 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - Table View Delegate
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //no search results yet
         if !hasSearched{
             return 0
+        //for nothingfound cell
         } else if resCount == 0 {
             return 1
+        //else, number of results
         } else {
             return resCount!
         }
@@ -340,23 +337,26 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             //if location isn't listed, print the coords instead
 
             //print("returned cell")
-            UIView.animate(withDuration: 1, animations: {
+            //animate cell
+            UIView.animate(withDuration: 2, animations: {
                             cell.transform = CGAffineTransform.identity}
             )
             return cell
-            
         }
     }
     
     //funcs for selection handling
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //attributeInfo[].address = searchRes?.results[indexPath.row].address
-        
         //tableView.deselectRow(at: indexPath, animated: true)
+        //show attributes when tap on cell
         performSegue(withIdentifier: "ShowAttributes", sender: self)
     }
+    
+    //send info to attributesview
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? AttributesViewController {
+            //set attributes array to current index's data
             destination.attributesArray = (searchRes?.results[(tableView.indexPathForSelectedRow?.row)!])!
         }
     }
@@ -369,7 +369,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    //need to do set heigh manually or cell doesn't display
+    //need to do set height manually or cell doesn't display
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
